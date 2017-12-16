@@ -1,0 +1,41 @@
+{
+  "name": "smart-city-dashboard",
+  "version": "1.0.0",
+  "description": "A dashboard to display all applications of smart campus.",
+  "main": "index.js",
+  "scripts": {
+    "dev": "webpack-dev-server --config webpack.config.dev.js",
+    "build": "webpack -p --config webpack.config.prod.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Sirius207/Smart-Campus-Dashboard.git"
+  },
+  "author": "Sirius",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Sirius207/Smart-Campus-Dashboard/issues"
+  },
+  "homepage": "https://github.com/Sirius207/Smart-Campus-Dashboard#readme",
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "clean-webpack-plugin": "^0.1.17",
+    "css-loader": "^0.28.7",
+    "eslint": "^4.9.0",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.8.0",
+    "extract-text-webpack-plugin": "^3.0.2",
+    "file-loader": "^1.1.6",
+    "html-loader": "^0.5.1",
+    "html-webpack-plugin": "^2.30.1",
+    "node-sass": "^4.7.2",
+    "sass-loader": "^6.0.6",
+    "style-loader": "^0.19.1",
+    "uglifyjs-webpack-plugin": "^1.1.4",
+    "webpack": "^3.10.0",
+    "webpack-dev-server": "^2.9.7"
+  }
+}
