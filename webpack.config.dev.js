@@ -1,8 +1,8 @@
 const path = require('path');
 const webpack = require('webpack');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const ReloadPlugin = require('reload-html-webpack-plugin');
 
 const buildPath = path.resolve(__dirname, 'dist');
 const extractPlugin = new ExtractTextPlugin({
@@ -13,7 +13,7 @@ module.exports = {
   context: path.resolve(__dirname, 'src'),
   devtool: 'inline-source-map',
   devServer: {
-    contentBase: 'path.resolve(__dirname, "dist/assets/media")',
+    contentBase: 'path.resolve(__dirname, "dist")',
     hot: true,
     open: true,
     compress: true,
@@ -93,5 +93,7 @@ module.exports = {
     new webpack.NoEmitOnErrorsPlugin(),
     // Extract CSS Files From JS Bundle
     extractPlugin,
+    // Hot Reload html
+    new ReloadPlugin(),
   ],
 };
