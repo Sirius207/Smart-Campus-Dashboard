@@ -1,3 +1,10 @@
 .navbar {
-  display: flex;
+  width: 80%;
+  margin: auto;
+  @extend %flex-vertical-center;
+  justify-content: space-between;
+  
+  .navbar-nav {
+    @extend %flex-vertical-center;
+  }
 }

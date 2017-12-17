@@ -1,0 +1,14 @@
+button {
+  cursor: pointer;
+}
+
+.btn {
+  &.btn--reset {
+    background-color: rgba(0,0,0,0);
+    border: 0;
+  }
+
+  &.btn--icon img {
+    width: $navIcon-size;
+  }
+}

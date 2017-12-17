@@ -1,8 +1,17 @@
 
+// Body, header, main, & footer
+
 body {
-  background: $bgcolor;
+  background: $bg-color;
 }
 
-.app-header {
+header.app-header {
   width: 100%;
+  background-color: #fff;
+  border-bottom: 1px solid rgba(0,0,0,0.2);
+  box-shadow: 0 0 1px 1px rgba(0,0,0,0.1);
+}
+
+main {
+  margin: $normal-margin;
 }

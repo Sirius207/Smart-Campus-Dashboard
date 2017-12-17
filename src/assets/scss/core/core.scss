@@ -1,12 +1,14 @@
 // Import core styles
 @import "variables";
-@import "mixins";
+@import "extend";
 
 // Animations
 @import "animate";
 
 // Components
 @import "navbar";
+@import "avatars";
+@import "buttons";
 
 // Layout Options
 @import "layout";
