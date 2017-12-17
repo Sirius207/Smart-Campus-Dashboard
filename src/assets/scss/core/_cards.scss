@@ -1,7 +1,9 @@
 .card {
-  padding: $normal-spacing;
   min-width: 200px;
-  max-width: 400px;
+  cursor: pointer;
+  .card-inner {
+    margin: $normal-spacing;
+  }
   img {
     width: 100%;
   }
