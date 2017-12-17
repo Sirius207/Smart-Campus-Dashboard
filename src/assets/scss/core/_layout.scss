@@ -13,5 +13,10 @@ header.app-header {
 }
 
 main {
-  margin: $normal-margin;
+  margin: $normal-spacing;
+}
+
+.container {
+  width: 80%;
+  margin: auto;
 }
