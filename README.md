@@ -1,4 +1,4 @@
-# Smart City Dashboard
+# Smart Campus Dashboard
 A dashboard to display all applications of smart campus.
 
 
@@ -6,7 +6,8 @@ A dashboard to display all applications of smart campus.
 
 1.0.0
 
-## Requirements
+## Setup
 
-- Node: ^7.6.0
-- ESLint: airbnb
+### Prerequisite
+- Webpack: 3.x
+- ESLint: [airbnb](https://github.com/airbnb/javascript/tree/master/packages/eslint-config-airbnb)
