@@ -5,17 +5,18 @@ A dashboard to display all applications of smart campus.
 ## Changelog
 
 1.0.0
+
 - Layout
 - - [x] Basic Layout
-- Cards
-- - [x] Draggable Cards
-- - [] Resize cards
-- - [] Add Cards
-- - [] Remove Cards
-- - [] Dynamic Loading
+- Cards Method
+- - [x] Dragg Cards
+- - [ ] Resize cards
+- - [ ] Add Cards
+- - [ ] Remove Cards
+- - [ ] Dynamic Loading
 - Func
-- - [] Signup
-- - [] Login
+- - [ ] Signup
+- - [ ] Login
 
 
 ## Setup
