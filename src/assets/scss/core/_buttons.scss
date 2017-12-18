@@ -3,6 +3,10 @@ button {
 }
 
 .btn {
+  display: inline-block;
+  box-sizing: border-box;
+  width: 100%;
+
   &.btn--reset {
     background-color: rgba(0,0,0,0);
     border: 0;

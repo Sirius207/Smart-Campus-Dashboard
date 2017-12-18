@@ -1,0 +1,49 @@
+.popover {
+  position: absolute;
+  z-index: 2;
+  visibility: hidden;
+  pointer-events: none;
+
+  &.avatar-pop {
+    top: 60px;
+    right: 10%;
+    background-color: #fff;
+    box-shadow: 0 1px 1px 0 rgba(0,0,0,0.5);
+
+    &::before {
+      display: inline-block;
+      position: absolute;
+      top: -15px;
+      right: 15px;
+      content: '';
+      width: 15px;
+      height: 15px;
+      background-color: #fff;
+      box-shadow: -1px -1px 1px -1px rgba(0,0,0,0.4);
+      transform: rotate(45deg) translate(6px, 6px);
+    }
+  }
+  .popover-inner {
+    padding: 8px 0;
+
+    .list-item {
+      line-height: 1.5;
+      text-align: left;
+
+      a {
+        padding: 10px 25px;
+        color: $linkFont-color;
+        text-decoration: none;
+      }
+      &:hover {
+        a {
+          color: $linkFont-color--hover;
+        }
+      }
+    }
+  }
+  &.pop--active {
+    visibility: visible;
+    pointer-events: all;
+  }
+}

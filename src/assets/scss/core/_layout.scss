@@ -1,6 +1,8 @@
 
 // Body, header, main, & footer
 
+$borderColor: rgba(0,0,0,0.2);
+
 body {
   background: $bg-color;
 }
@@ -8,15 +10,23 @@ body {
 header.app-header {
   width: 100%;
   background-color: #fff;
-  border-bottom: 1px solid rgba(0,0,0,0.2);
+  border-bottom: 1px solid $borderColor;
   box-shadow: 0 0 1px 1px rgba(0,0,0,0.1);
 }
 
 main {
   margin: $normal-spacing;
+  min-height: calc(100vh - 50px);
 }
 
 .container {
   width: 80%;
   margin: auto;
+}
+
+footer.app-footer {
+  width: 100%; 
+  padding: 15px 0;
+  background-color: #fff;
+  border-top: 1px solid $borderColor;
 }
