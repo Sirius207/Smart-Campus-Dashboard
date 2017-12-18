@@ -24,7 +24,6 @@ module.exports = {
     // with context setup, ./src/app.js -> ./app.js
     app: './app.js',
     vendors: './vendors.js',
-    polyfill: 'babel-polyfill',
   },
   output: {
     path: buildPath,
@@ -40,6 +39,7 @@ module.exports = {
           loader: 'babel-loader',
           options: {
             presets: ['env'],
+            plugins: [['transform-runtime']],
           },
         },
       },
