@@ -10,6 +10,7 @@ button {
   &.btn--reset {
     background-color: rgba(0,0,0,0);
     border: 0;
+    outline: 0;
   }
 
   &.btn--icon img {
