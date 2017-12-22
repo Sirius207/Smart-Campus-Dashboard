@@ -37,7 +37,7 @@ $ yarn install // or npm install
 $ npm run dev
 ```
 
-### 3. Run Locally (Prod)
+### 3. Generate Production Static Files
 ```
 $ npm run build
 ```
