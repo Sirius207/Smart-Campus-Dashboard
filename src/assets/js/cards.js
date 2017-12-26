@@ -7,6 +7,7 @@ import cardsData from './list';
   function cardTemplate(cardData) {
     const card = `<div class="card grid-item grid-item--${cardData.size.defaultSize}">
                     <div class="card-inner"><a href="${cardData.link}"><img src="${cardData.size[cardData.size.defaultSize]}"></a></div>
+                    <div class="card-removeBtn">X</div>
                   </div>`;
     return card;
   }
@@ -27,18 +28,26 @@ import cardsData from './list';
 
     // reorder cards
     const cardsList = document.querySelector('.grid');
-    const grid = new Packery(cardsList, {
+    const $grid = new Packery(cardsList, {
       itemSelector: '.grid-item',
       columnWidth: '.grid-sizer',
       percentPosition: true,
       gutter: 0,
     });
 
-    // make cards draggable
+    // bind card drag event
     $('.grid').find('.grid-item').each((i, gridItem) => {
       const dragEvent = new Draggabilly(gridItem);
       // bind drag events to Grid
-      grid.bindDraggabillyEvents(dragEvent);
+      $grid.bindDraggabillyEvents(dragEvent);
+    });
+
+    // bind card remove event
+    $('.grid').on('click', '.card-removeBtn', (event) => {
+      // remove clicked element
+      $grid.remove(event.target.parentNode);
+      // shiftLayout remaining item elements
+      $grid.shiftLayout();
     });
   }
 
