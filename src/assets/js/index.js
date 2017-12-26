@@ -1,5 +1,5 @@
 
 // Cards Drag & Masonry Features
-import './packery';
+import './cards';
 // PopMenu Toggle
 import './toggle';

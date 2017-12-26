@@ -10,10 +10,10 @@ A dashboard to display all applications of smart campus.
 - - [x] Basic Layout
 - Cards Method
 - - [x] Dragg Cards
-- - [ ] Resize cards
+- - [x] Dynamic Cards Loading
 - - [ ] Add Cards
 - - [ ] Remove Cards
-- - [ ] Dynamic Cards Loading
+- - [ ] Resize cards
 - Func
 - - [ ] Signup
 - - [ ] Login
