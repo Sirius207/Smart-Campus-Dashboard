@@ -1,32 +1,44 @@
 export default [
   {
-    size: 'size2',
+    size: {
+      medium: 'http://fakeimg.pl/400x400/',
+      defaultSize: 'medium',
+    },
     link: '#',
-    image: 'http://fakeimg.pl/400x400/',
   },
   {
-    size: 'size3',
+    size: {
+      large: 'http://fakeimg.pl/600x200/',
+      defaultSize: 'large',
+    },
     link: '#',
-    image: 'http://fakeimg.pl/600x200/',
   },
   {
-    size: 'size2',
+    size: {
+      medium: 'http://fakeimg.pl/400x600/',
+      defaultSize: 'medium',
+    },
     link: '#',
-    image: 'http://fakeimg.pl/400x600/',
   },
   {
-    size: 'size2',
+    size: {
+      medium: 'http://fakeimg.pl/400x400/',
+      defaultSize: 'medium',
+    },
     link: '#',
-    image: 'http://fakeimg.pl/400x400/',
   },
   {
-    size: 'size1',
+    size: {
+      small: 'http://fakeimg.pl/200x200/',
+      defaultSize: 'small',
+    },
     link: '#',
-    image: 'http://fakeimg.pl/200x200/',
   },
   {
-    size: 'size1',
+    size: {
+      small: 'http://fakeimg.pl/200x200/',
+      defaultSize: 'small',
+    },
     link: '#',
-    image: 'http://fakeimg.pl/200x200/',
   },
 ];
