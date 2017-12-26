@@ -1,14 +1,15 @@
 import Packery from 'packery';
 import Draggabilly from 'draggabilly';
 import $ from 'jquery';
-import cardsData from './cardData';
+import cardsData from './data/cardData';
+import cardOrder from './data/cardOrder';
 
 (() => {
-  function cardTemplate(cardData) {
-    const card = `<div class="card grid-item grid-item--${cardData.size.defaultSize}">
+  function cardTemplate(cardData, size) {
+    const card = `<div class="card grid-item grid-item--${size}">
                     <div class="card-inner">
                       <a href="${cardData.link}">
-                        <img src="${cardData.size[cardData.size.defaultSize]}">
+                        <img src="${cardData.size[size]}">
                       </a>
                     </div>
                     <div class="card-removeBtn">X</div>
@@ -19,7 +20,7 @@ import cardsData from './cardData';
   function setAllCards(dataList) {
     return dataList.reduce((cardsDom, cardData) => {
       let currentDom = cardsDom;
-      currentDom += cardTemplate(cardData);
+      currentDom += cardTemplate(cardsData[cardData.id], cardData.size);
       return currentDom;
     }, '');
   }
@@ -27,7 +28,7 @@ import cardsData from './cardData';
   // Make cards Draggable & display with masonry layout
   function initCardsLayout() {
     // render cards
-    const cardsDom = setAllCards(cardsData);
+    const cardsDom = setAllCards(cardOrder);
     $('.grid').append(cardsDom);
 
     // reorder cards
