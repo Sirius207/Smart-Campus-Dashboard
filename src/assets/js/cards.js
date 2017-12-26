@@ -21,29 +21,27 @@ import cardsData from './list';
 
   // Make cards Draggable & display with masonry layout
   function initCardsLayout() {
-    function makeItemDraggable(itemElem) {
-      // make element draggable with Draggabilly
-      const draggie = new Draggabilly(itemElem);
-      // bind Draggabilly events to Packery
-      pckry.bindDraggabillyEvents(draggie);
-    }
-
     // render cards
     const cardsDom = setAllCards(cardsData);
     $('.grid').append(cardsDom);
 
     // reorder cards
     const cardsList = document.querySelector('.grid');
-    const pckry = new Packery(cardsList, {
+    const grid = new Packery(cardsList, {
       itemSelector: '.grid-item',
+      columnWidth: '.grid-sizer',
+      percentPosition: true,
       gutter: 0,
     });
 
-    // bind draggabilly events to each card
-    pckry.items.forEach((item) => {
-      makeItemDraggable(item.element);
+    // make cards draggable
+    $('.grid').find('.grid-item').each((i, gridItem) => {
+      const dragEvent = new Draggabilly(gridItem);
+      // bind drag events to Grid
+      grid.bindDraggabillyEvents(dragEvent);
     });
   }
+
   initCardsLayout();
 }
 )();

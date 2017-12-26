@@ -10,6 +10,7 @@
   }
 }
 
+.grid-sizer,
 .grid-item--small {
   width: 20%;
 }
@@ -20,4 +21,10 @@
 
 .grid-item--large {
   width: 60%;
+}
+
+.packery-drop-placeholder {
+  outline: 2px dashed rgba(0,0,0,0.5);
+  outline-offset: -6px;
+  transition: transform 0.2s;
 }
