@@ -55,3 +55,29 @@
   outline-offset: -6px;
   transition: transform 0.2s;
 }
+
+
+.cards-pool {
+  height: 20px;
+  width: 100%;
+  background-color: #cccccc;
+  padding: 20px 0;
+
+  .pool-item {
+    display: inline-block;
+    margin: 0 10px;
+
+    .btn {
+      font-size: 15px;
+      font-weight: 400;
+      color: #fff;
+      background-color: hsl(151, 65%, 58%);
+      border: 1px solid rgba(0,0,0,0.1);
+      border-radius: 5px;
+      transition: 0.2s;
+      &:hover{
+        background-color: hsl(151, 65%, 65%);
+      }
+    }
+  }
+}
