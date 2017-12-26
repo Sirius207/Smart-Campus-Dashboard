@@ -1,12 +1,16 @@
 import Packery from 'packery';
 import Draggabilly from 'draggabilly';
 import $ from 'jquery';
-import cardsData from './list';
+import cardsData from './cardData';
 
 (() => {
   function cardTemplate(cardData) {
     const card = `<div class="card grid-item grid-item--${cardData.size.defaultSize}">
-                    <div class="card-inner"><a href="${cardData.link}"><img src="${cardData.size[cardData.size.defaultSize]}"></a></div>
+                    <div class="card-inner">
+                      <a href="${cardData.link}">
+                        <img src="${cardData.size[cardData.size.defaultSize]}">
+                      </a>
+                    </div>
                     <div class="card-removeBtn">X</div>
                   </div>`;
     return card;
@@ -51,7 +55,8 @@ import cardsData from './list';
     });
   }
 
-  initCardsLayout();
-}
-)();
-
+  $(document).ready(() => {
+    initCardsLayout();
+    $('.loader').remove();
+  });
+})();
