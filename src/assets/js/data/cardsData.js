@@ -9,7 +9,7 @@ export default {
     link: '#',
   },
   2: {
-    id: 1,
+    id: 2,
     title: 'MosquitoZapper',
     size: {
       medium: 'http://fakeimg.pl/400x400/',
@@ -18,7 +18,7 @@ export default {
     link: '#',
   },
   3: {
-    id: 2,
+    id: 3,
     title: 'Path',
     size: {
       large: 'http://fakeimg.pl/600x200/',
@@ -28,8 +28,8 @@ export default {
     link: '#',
   },
   4: {
-    id: 3,
-    title: 'Vote',
+    id: 4,
+    title: 'Vote-a',
     size: {
       medium: 'http://fakeimg.pl/400x600/',
     },
@@ -37,8 +37,18 @@ export default {
     link: '#',
   },
   5: {
-    id: 4,
-    title: 'Vote',
+    id: 5,
+    title: 'Vote-b',
+    size: {
+      small: 'http://fakeimg.pl/200x200/',
+      medium: 'http://fakeimg.pl/400x200/',
+    },
+    defaultSize: 'small',
+    link: '#',
+  },
+  6: {
+    id: 6,
+    title: 'Vote-c',
     size: {
       small: 'http://fakeimg.pl/200x200/',
       medium: 'http://fakeimg.pl/400x200/',

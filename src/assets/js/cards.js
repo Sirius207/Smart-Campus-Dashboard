@@ -17,7 +17,7 @@ import cardOrder from './data/cardOrder';
     return card;
   }
 
-  function setAllCards(dataList) {
+  function setAllCardsDOM(dataList) {
     return dataList.reduce((cardsDom, cardData) => {
       let currentDom = cardsDom;
       currentDom += cardTemplate(cardsData[cardData.id], cardData.size);
@@ -27,8 +27,14 @@ import cardOrder from './data/cardOrder';
 
   // Make cards Draggable & display with masonry layout
   function initCardsLayout() {
+    // bind card drag events to Grid
+    function makeCardDraggable(grid, gridItem) {
+      const dragEvent = new Draggabilly(gridItem);
+      grid.bindDraggabillyEvents(dragEvent);
+    }
+
     // render cards
-    const cardsDom = setAllCards(cardOrder);
+    const cardsDom = setAllCardsDOM(cardOrder.order);
     $('.grid').append(cardsDom);
 
     // reorder cards
@@ -40,15 +46,9 @@ import cardOrder from './data/cardOrder';
       gutter: 0,
     });
 
-    // bind card drag events to Grid
-    function makeCardDraggable(gridItem) {
-      const dragEvent = new Draggabilly(gridItem);
-      $grid.bindDraggabillyEvents(dragEvent);
-    }
-
     // bind card drag event
     $('.grid').find('.grid-item').each((i, gridItem) => {
-      makeCardDraggable(gridItem);
+      makeCardDraggable($grid, gridItem);
     });
 
     // bind card remove event
@@ -67,7 +67,7 @@ import cardOrder from './data/cardOrder';
       $('.grid').append(cardDOM);
       const newCard = $('.grid-item').last();
       $grid.appended(newCard);
-      makeCardDraggable(newCard[0]);
+      makeCardDraggable($grid, newCard[0]);
       // remove clicked button
       event.target.parentNode.remove();
     });

@@ -25,8 +25,10 @@ main {
 }
 
 footer.app-footer {
+  position: relative;
+  z-index: 2;
   width: 100%; 
   padding: 15px 0;
   background-color: #fff;
-  border-top: 1px solid $borderColor;
+  box-shadow: 0 -1px 1px 0 rgba(0, 0, 0, 0.05);
 }

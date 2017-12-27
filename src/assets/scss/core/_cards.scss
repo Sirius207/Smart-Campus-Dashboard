@@ -43,14 +43,17 @@
 .grid-sizer,
 .grid-item--small {
   width: 20%;
+  max-width: 200px;
 }
 
 .grid-item--medium {
   width: 40%;
+  max-width: 400px;
 }
 
 .grid-item--large {
   width: 60%;
+  max-width: 600px;
 }
 
 .packery-drop-placeholder {
@@ -65,7 +68,7 @@
   z-index: 1;
   height: 20px;
   width: 100%;
-  background-color: #cccccc;
+  background-color: #a6dc7c;
   padding: 20px 0;
 
   .pool-item {
