@@ -32,7 +32,7 @@
   &:hover {
     .card-removeBtn {
       opacity: 1;
-      transition: 0.2s;
+      transition: $normal-transition-second;
       &:hover {
         background-color: hsl(0, 100%, 70%); 
       }
@@ -59,17 +59,25 @@
 .packery-drop-placeholder {
   outline: 2px dashed rgba(0,0,0,0.5);
   outline-offset: -6px;
-  transition: transform 0.2s;
+  transition: transform $normal-transition-second;
 }
 
 
 .cards-pool {
   position: relative;
   z-index: 1;
-  height: 20px;
   width: 100%;
-  background-color: #a6dc7c;
+  min-height: 20px;
   padding: 20px 0;
+  background-color: #a6dc7c;
+  // hidden
+  transform: translate3d(0, 100%, 0) scale3d(1,0,1);
+  transition: $normal-transition-second;
+  transition-timing-function: ease-in-out;
+
+  &.pool--active {
+    transform: translate3d(0, 0, 0) scale3d(1,1,1);
+  }
 
   .pool-item {
     display: inline-block;
@@ -87,5 +95,14 @@
         background-color: hsl(151, 65%, 65%);
       }
     }
+  }
+}
+.cards-pool--switch {
+  @extend %absolute-horizontal-center;
+  text-align: center;
+  transform: translate3d(0, 0, 0);
+  transition: $normal-transition-second;
+  &.switch--active {
+    transform: translate3d(0, -120%, 0);
   }
 }
