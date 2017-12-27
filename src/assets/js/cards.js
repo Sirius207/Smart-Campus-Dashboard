@@ -1,11 +1,11 @@
 import Packery from 'packery';
 import Draggabilly from 'draggabilly';
 import $ from 'jquery';
-import cardsData from './data/cardData';
+import cardsData from './data/cardsData';
 import cardOrder from './data/cardOrder';
 
 (() => {
-  function cardTemplate(cardData, size) {
+  function cardTemplate(cardData, size = 'medium') {
     const card = `<div class="card grid-item grid-item--${size}">
                     <div class="card-inner">
                       <a href="${cardData.link}">
@@ -40,11 +40,15 @@ import cardOrder from './data/cardOrder';
       gutter: 0,
     });
 
+    // bind card drag events to Grid
+    function makeCardDraggable(gridItem) {
+      const dragEvent = new Draggabilly(gridItem);
+      $grid.bindDraggabillyEvents(dragEvent);
+    }
+
     // bind card drag event
     $('.grid').find('.grid-item').each((i, gridItem) => {
-      const dragEvent = new Draggabilly(gridItem);
-      // bind drag events to Grid
-      $grid.bindDraggabillyEvents(dragEvent);
+      makeCardDraggable(gridItem);
     });
 
     // bind card remove event
@@ -54,10 +58,24 @@ import cardOrder from './data/cardOrder';
       // shiftLayout remaining item elements
       $grid.shiftLayout();
     });
+
+    // bind card add event
+    $('.cards-pool').on('click', '.pool-btn', (event) => {
+      const cardID = event.target.dataset.id;
+      const cardDOM = cardTemplate(cardsData[cardID]);
+      // append new card to grid
+      $('.grid').append(cardDOM);
+      const newCard = $('.grid-item').last();
+      $grid.appended(newCard);
+      makeCardDraggable(newCard[0]);
+      // remove clicked button
+      event.target.parentNode.remove();
+    });
   }
 
   $(document).ready(() => {
     initCardsLayout();
+    // remove loader when loading complete
     $('.loader').remove();
   });
 })();

@@ -1,9 +1,11 @@
 .card {
   min-width: 200px;
   cursor: pointer;
+
   .card-inner {
     margin: $normal-spacing;
   }
+
   img {
     width: 100%;
     box-shadow: $normal-shadow;
@@ -26,6 +28,7 @@
     font-weight: 800;
     z-index: 2;
   }
+
   &:hover {
     .card-removeBtn {
       opacity: 1;
@@ -58,6 +61,8 @@
 
 
 .cards-pool {
+  position: relative;
+  z-index: 1;
   height: 20px;
   width: 100%;
   background-color: #cccccc;
