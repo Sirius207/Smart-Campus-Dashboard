@@ -3,7 +3,9 @@ export default {
     id: 1,
     title: 'MosquitoMap',
     size: {
+      small: 'http://fakeimg.pl/200x400/',
       medium: 'http://fakeimg.pl/400x400/',
+      large: 'http://fakeimg.pl/600x400/',
     },
     defaultSize: 'medium',
     link: '#',
@@ -12,7 +14,9 @@ export default {
     id: 2,
     title: 'MosquitoZapper',
     size: {
+      small: 'http://fakeimg.pl/200x400/',
       medium: 'http://fakeimg.pl/400x400/',
+      large: 'http://fakeimg.pl/600x400/',
     },
     defaultSize: 'medium',
     link: '#',
@@ -21,8 +25,9 @@ export default {
     id: 3,
     title: 'Path',
     size: {
-      large: 'http://fakeimg.pl/600x200/',
+      small: 'http://fakeimg.pl/200x200/',
       medium: 'http://fakeimg.pl/400x200/',
+      large: 'http://fakeimg.pl/600x200/',
     },
     defaultSize: 'large',
     link: '#',
@@ -31,7 +36,9 @@ export default {
     id: 4,
     title: 'Vote-a',
     size: {
+      small: 'http://fakeimg.pl/200x600/',
       medium: 'http://fakeimg.pl/400x600/',
+      large: 'http://fakeimg.pl/600x600/',
     },
     defaultSize: 'medium',
     link: '#',
@@ -42,6 +49,7 @@ export default {
     size: {
       small: 'http://fakeimg.pl/200x200/',
       medium: 'http://fakeimg.pl/400x200/',
+      large: 'http://fakeimg.pl/600x200/',
     },
     defaultSize: 'small',
     link: '#',
@@ -52,6 +60,7 @@ export default {
     size: {
       small: 'http://fakeimg.pl/200x200/',
       medium: 'http://fakeimg.pl/400x200/',
+      large: 'http://fakeimg.pl/600x200/',
     },
     defaultSize: 'small',
     link: '#',

@@ -1,9 +1,9 @@
 import $ from 'jquery';
 import cardsData from './data/cardsData';
-import cardOrder from './data/cardOrder';
+import userCardOrder from './data/cardOrder';
 
 (() => {
-  const usedCardsID = cardOrder.usedID;
+  const usedCardsID = userCardOrder.usedID;
 
   function cardPoolItemTemplate(cardData) {
     const poolItem = `

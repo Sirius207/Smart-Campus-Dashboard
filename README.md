@@ -12,7 +12,7 @@ A dashboard to display all applications of smart campus.
 - - [x] Dragg Cards
 - - [x] Dynamic Cards Loading
 - - [x] Remove Cards
-- - [ ] Add Cards
+- - [x] Add Cards
 - - [ ] Resize cards
 - Func
 - - [ ] Signup

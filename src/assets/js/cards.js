@@ -2,7 +2,7 @@ import Packery from 'packery';
 import Draggabilly from 'draggabilly';
 import $ from 'jquery';
 import cardsData from './data/cardsData';
-import cardOrder from './data/cardOrder';
+import userCardOrder from './data/cardOrder';
 
 (() => {
   function cardTemplate(cardData, size = 'medium') {
@@ -34,7 +34,7 @@ import cardOrder from './data/cardOrder';
     }
 
     // render cards
-    const cardsDom = setAllCardsDOM(cardOrder.order);
+    const cardsDom = setAllCardsDOM(userCardOrder.order);
     $('.grid').append(cardsDom);
 
     // reorder cards
