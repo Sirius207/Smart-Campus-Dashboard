@@ -43,12 +43,12 @@ import defaultChartConfig from '../../data/chartConfig';
       grid.bindDraggabillyEvents(dragEvent);
     }
 
-    // bind card drag event
+    // bind drag event to each card
     $('.grid').find('.grid-item').each((i, gridItem) => {
       makeCardDraggable($grid, gridItem);
     });
 
-    // bind card remove event
+    // bind remove event to each card
     $('.grid').on('click', '.card-removeBtn', (event) => {
       // remove clicked element
       $grid.remove(event.target.parentNode);
@@ -56,7 +56,7 @@ import defaultChartConfig from '../../data/chartConfig';
       $grid.shiftLayout();
     });
 
-    // bind card add event
+    // bind add event to grid & addCard buttons
     $('.cards-pool').on('click', '.pool-btn', (event) => {
       const cardID = event.target.dataset.id;
       const cardDOM = cardTemplate(cardsData[cardID]);
@@ -84,7 +84,6 @@ import defaultChartConfig from '../../data/chartConfig';
       percentPosition: true,
       gutter: 0,
     });
-
     bindGridEvent($grid);
     return $('canvas');
   }

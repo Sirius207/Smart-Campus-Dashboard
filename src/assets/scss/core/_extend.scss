@@ -9,3 +9,9 @@
   right: 0;
   margin: auto;
 }
+
+%general-block-frame {
+  background-color: #fff;
+  box-shadow: $normal-shadow;
+  border-radius: 3px;
+}

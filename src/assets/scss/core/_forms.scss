@@ -1,0 +1,30 @@
+.form-title, .form-row {
+  text-align: center;
+}
+
+.inputGroup {
+  display: flex;
+  margin: 1rem;
+
+  .input-label {
+    display: inline-block;
+    padding: 0 0.5rem;
+    width: 8rem;
+    height: 30px;
+    line-height: 30px;
+    box-sizing: border-box;
+    border-radius: 3px 0 0 3px;
+    border: 1px solid #ccc;
+    background-color: #f6f8fa;
+    color: #555;
+    text-align: left;
+  }
+
+  .input-box {
+    padding: 0;
+    box-sizing: border-box;
+    width: 8rem;
+    height: 30px;
+    border: 1px solid #ccc;
+  }
+}

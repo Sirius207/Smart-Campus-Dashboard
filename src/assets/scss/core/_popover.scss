@@ -1,5 +1,6 @@
 // Local variables
 $popOver-borderRadius: 3px;
+$popOver-top: 60px;
 
 .popover {
   position: absolute;
@@ -7,13 +8,11 @@ $popOver-borderRadius: 3px;
   opacity: 0;
   pointer-events: none;
 
-
+  // user menu block
   &.avatar-pop {
-    top: 60px;
+    top: $popOver-top;
     right: 10%;
-    background-color: #fff;
-    box-shadow: $normal-shadow;
-    border-radius: 3px;
+    @extend %general-block-frame;
     transition: 0.2s;
     transition-timing-function: cubic-bezier(0, 1.26, 1, 1);
 
@@ -30,6 +29,13 @@ $popOver-borderRadius: 3px;
       box-shadow: -1px -1px 1px -1px rgba(0,0,0,0.4);
       transform: rotate(45deg) translate(6px, 6px);
     }
+  }
+  // login & signup form block
+  &.authForm-pop {
+    top: $popOver-top;
+    right: 10%;
+    padding: 20px;
+    @extend %general-block-frame;
   }
   .popover-inner {
     padding: 8px 0;
