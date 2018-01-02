@@ -14,10 +14,10 @@ function inputGroupTemplate(field) {
 
 function formTemplate(formMeta, fields) {
   return `
-    <div class="popover authForm-pop ${formMeta.title.toLowerCase()}-pop">
+    <div class="popover authForm-pop ${formMeta.url}-pop">
       <div class="popover-inner">
         <h2 class="form-title">${formMeta.title}</h2>
-        <form action=${BASE_URL}${formMeta.url} method="${formMeta.method}">
+        <form action="${BASE_URL}/${formMeta.url}/" method="${formMeta.method}">
           ${fields.map(inputGroupTemplate).join('')}
           <div class="form-row">
             <button class="btn--submit">Submit</button>
@@ -30,7 +30,7 @@ function formTemplate(formMeta, fields) {
 function loginFormTemplate() {
   const formData = {
     formMeta: {
-      url: '/login/',
+      url: 'login',
       method: 'post',
       title: 'Login',
     },
@@ -45,7 +45,7 @@ function loginFormTemplate() {
 function signupFormTemplate() {
   const formData = {
     formMeta: {
-      url: '/signup/',
+      url: 'signup',
       method: 'post',
       title: 'Signup',
     },
