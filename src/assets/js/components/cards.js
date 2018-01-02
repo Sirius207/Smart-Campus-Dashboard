@@ -1,8 +1,8 @@
 import Packery from 'packery';
 import Draggabilly from 'draggabilly';
 import $ from 'jquery';
-import cardsData from '../data/cardsData';
-import userCardOrder from '../data/cardOrder';
+import cardsData from '../../data/cardsData';
+import userCardOrder from '../../data/cardOrder';
 
 (() => {
   function cardTemplate(cardData, size = 'medium') {
