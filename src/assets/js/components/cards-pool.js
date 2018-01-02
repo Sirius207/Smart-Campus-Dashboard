@@ -1,6 +1,6 @@
 import $ from 'jquery';
-import cardsData from './data/cardsData';
-import userCardOrder from './data/cardOrder';
+import cardsData from '../data/cardsData';
+import userCardOrder from '../data/cardOrder';
 
 (() => {
   const usedCardsID = userCardOrder.usedID;
