@@ -5,6 +5,15 @@ import $ from 'jquery';
     $('.avatar-pop').toggleClass('pop--active');
   });
 
+  $('#btn--signup').click(() => {
+    $('.signup-pop').toggleClass('pop--active');
+  });
+
+
+  $('#btn--login').click(() => {
+    $('.login-pop').toggleClass('pop--active');
+  });
+
   $('.cards-pool--switch button').click(() => {
     $('.cards-pool').toggleClass('pool--active');
     $('.cards-pool--switch').toggleClass('switch--active');

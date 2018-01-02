@@ -1,38 +1,38 @@
 
 const BASE_URL = 'https://smartcampus.csie.ncku.edu.tw/smart_campus';
 
-export function inputGroupTemplate(field) {
+function inputGroupTemplate(field) {
   return `
     <div class="form-row">
       <div class="inputGroup">
         <span class="input-label">${field.label}</span>
-        <input class="input-box" type="${field.type}">
+        <input class="input-box" type="${field.type}" name="${field.label}">
       </div>
     </div>
   `;
 }
 
-export function formTemplate(formMeta, fields) {
+function formTemplate(formMeta, fields) {
   return `
-    <div id ="login-block" class="popover authForm-pop">
-    <div class="popover-inner">
-      <h2 class="form-title">Login</h2>
-      <form action=${BASE_URL}/${formMeta.url}" method="${formMeta.method}">
-        ${fields.map(inputGroupTemplate)}
-        <div class="form-row">
-          <button class="btn--submit">Submit</button>
-        </div>
-      </form>
-    </div>
-  </div>`;
+    <div class="popover authForm-pop ${formMeta.title.toLowerCase()}-pop">
+      <div class="popover-inner">
+        <h2 class="form-title">${formMeta.title}</h2>
+        <form action=${BASE_URL}${formMeta.url} method="${formMeta.method}">
+          ${fields.map(inputGroupTemplate).join('')}
+          <div class="form-row">
+            <button class="btn--submit">Submit</button>
+          </div>
+        </form>
+      </div>
+    </div>`;
 }
 
-
-export function loginFormTemplate() {
+function loginFormTemplate() {
   const formData = {
     formMeta: {
-      url: '/login',
+      url: '/login/',
       method: 'post',
+      title: 'Login',
     },
     fields: [
       { label: 'email', type: 'email' },
@@ -42,11 +42,12 @@ export function loginFormTemplate() {
   return formTemplate(formData.formMeta, formData.fields);
 }
 
-export function signupFormTemplate() {
+function signupFormTemplate() {
   const formData = {
     formMeta: {
-      url: '/signup',
+      url: '/signup/',
       method: 'post',
+      title: 'Signup',
     },
     fields: [
       { label: 'nickname', type: 'text' },
@@ -59,7 +60,7 @@ export function signupFormTemplate() {
 
 // Pop Menu of Avatar
 // @Todo: Update links
-export function userMenuTemplate() {
+function userMenuTemplate() {
   return ` 
     <div class="popover avatar-pop">
       <div class="popover-inner">
@@ -73,7 +74,7 @@ export function userMenuTemplate() {
 }
 
 // avatar image e.g. https://cdn-images-1.medium.com/fit/c/32/32/1*EhFnVbXnRoEzBI6u97Bt7w.jpeg" alt="avatar
-export function authMenuTemplate(imageSrc) {
+function authMenuItemTemplate(imageSrc) {
   return `
     <li class="nav-item">
       <button class="btn btn--reset">
@@ -84,10 +85,18 @@ export function authMenuTemplate(imageSrc) {
     </li>`;
 }
 
-export default function unAuthMenuTemplate() {
+function unAuthMenuItemTemplate() {
   return `
     <li class="nav-item"><button id="btn--signup" class="btn btn--reset btn--icon">Signup</button></li>
     <li class="nav-item"><button id="btn--login" class="btn btn--reset btn--icon">Login</button></li>
   `;
 }
+
+export default {
+  loginFormTemplate,
+  signupFormTemplate,
+  userMenuTemplate,
+  authMenuItemTemplate,
+  unAuthMenuItemTemplate,
+};
 
