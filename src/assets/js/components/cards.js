@@ -25,26 +25,12 @@ import userCardOrder from '../../data/cardOrder';
     }, '');
   }
 
-  // Make cards Draggable & display with masonry layout
-  function initCardsLayout() {
+  function bindGridEvent($grid) {
     // bind card drag events to Grid
     function makeCardDraggable(grid, gridItem) {
       const dragEvent = new Draggabilly(gridItem);
       grid.bindDraggabillyEvents(dragEvent);
     }
-
-    // render cards
-    const cardsDom = setAllCardsDOM(userCardOrder.order);
-    $('.grid').append(cardsDom);
-
-    // reorder cards
-    const cardsList = document.querySelector('.grid');
-    const $grid = new Packery(cardsList, {
-      itemSelector: '.grid-item',
-      columnWidth: '.grid-sizer',
-      percentPosition: true,
-      gutter: 0,
-    });
 
     // bind card drag event
     $('.grid').find('.grid-item').each((i, gridItem) => {
@@ -71,6 +57,24 @@ import userCardOrder from '../../data/cardOrder';
       // remove clicked button
       event.target.parentNode.remove();
     });
+  }
+
+  // Make cards Draggable & display with masonry layout
+  function initCardsLayout() {
+    // render cards
+    const cardsDom = setAllCardsDOM(userCardOrder.order);
+    $('.grid').append(cardsDom);
+
+    // reorder cards
+    const cardsList = document.querySelector('.grid');
+    const $grid = new Packery(cardsList, {
+      itemSelector: '.grid-item',
+      columnWidth: '.grid-sizer',
+      percentPosition: true,
+      gutter: 0,
+    });
+
+    bindGridEvent($grid);
   }
 
   $(document).ready(() => {
