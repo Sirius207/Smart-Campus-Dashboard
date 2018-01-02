@@ -1,11 +1,22 @@
 import Packery from 'packery';
 import Draggabilly from 'draggabilly';
 import $ from 'jquery';
+import Chart from 'chart.js';
 import cardsData from '../../data/cardsData';
 import userCardOrder from '../../data/cardOrder';
+import defaultChartConfig from '../../data/chartConfig';
 
 (() => {
   function cardTemplate(cardData, size = 'medium') {
+    if (!cardData.type.localeCompare('vote')) {
+      const card = `<div class="card grid-item grid-item--${size}">
+                      <canvas id="${cardData.questionId}" width="400" height="400"
+                        href="${cardData.link}">
+                      </canvas>
+                      <div class="card-removeBtn">X</div>
+                    </div>`;
+      return card;
+    }
     const card = `<div class="card grid-item grid-item--${size}">
                     <div class="card-inner">
                       <a href="${cardData.link}">
@@ -75,10 +86,44 @@ import userCardOrder from '../../data/cardOrder';
     });
 
     bindGridEvent($grid);
+    return $('canvas');
   }
 
   $(document).ready(() => {
-    initCardsLayout();
+    $.when(initCardsLayout()).done((p) => {
+      $.each(p, (i, e) => {
+        $.get(`${e.getAttribute('href')}${e.getAttribute('id')}/statistics`, (getData) => {
+          // parse the array
+          const dataLabels = [];
+          const count = [];
+          getData.option.forEach((element) => {
+            dataLabels.push(element.label);
+            count.push(element.count);
+          });
+          // combine the config
+          const dataset = {
+            datasets: [
+              Object.assign({
+                data: count,
+              }, defaultChartConfig)],
+            labels: dataLabels,
+          };
+
+          const voteChart = new Chart(e, {
+            type: 'doughnut',
+            data: dataset,
+            options: {
+              // navigate to the vote page
+              onClick: () => {
+                window.location.href =
+                  `${e.getAttribute('href')}${localStorage.getItem('userName')}${e.getAttribute('id')}/statistics`;
+              },
+            },
+          });
+          return voteChart;
+        });
+      });
+    });
     // remove loader when loading complete
     $('.loader').remove();
   });
