@@ -1,6 +1,7 @@
 # Smart Campus Dashboard
 A dashboard to display all applications of smart campus.
 
+[![Maintainability](https://api.codeclimate.com/v1/badges/604f7e6136089a943a0f/maintainability)](https://codeclimate.com/github/Sirius207/Smart-Campus-Dashboard/maintainability)
 
 ## Changelog
 

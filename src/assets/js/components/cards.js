@@ -6,14 +6,15 @@ import userCardOrder from '../../data/cardOrder';
 
 (() => {
   function cardTemplate(cardData, size = 'medium') {
-    const card = `<div class="card grid-item grid-item--${size}">
-                    <div class="card-inner">
-                      <a href="${cardData.link}">
-                        <img src="${cardData.size[size]}">
-                      </a>
-                    </div>
-                    <div class="card-removeBtn">X</div>
-                  </div>`;
+    const card = `
+      <div class="card grid-item grid-item--${size}">
+        <div class="card-inner">
+          <a href="${cardData.link}">
+            <img src="${cardData.size[size]}">
+          </a>
+        </div>
+        <div class="card-removeBtn">X</div>
+      </div>`;
     return card;
   }
 
@@ -32,12 +33,12 @@ import userCardOrder from '../../data/cardOrder';
       grid.bindDraggabillyEvents(dragEvent);
     }
 
-    // bind card drag event
+    // bind drag event to each card
     $('.grid').find('.grid-item').each((i, gridItem) => {
       makeCardDraggable($grid, gridItem);
     });
 
-    // bind card remove event
+    // bind remove event to each card
     $('.grid').on('click', '.card-removeBtn', (event) => {
       // remove clicked element
       $grid.remove(event.target.parentNode);
@@ -45,7 +46,7 @@ import userCardOrder from '../../data/cardOrder';
       $grid.shiftLayout();
     });
 
-    // bind card add event
+    // bind add event to grid & addCard buttons
     $('.cards-pool').on('click', '.pool-btn', (event) => {
       const cardID = event.target.dataset.id;
       const cardDOM = cardTemplate(cardsData[cardID]);
@@ -73,7 +74,6 @@ import userCardOrder from '../../data/cardOrder';
       percentPosition: true,
       gutter: 0,
     });
-
     bindGridEvent($grid);
   }
 
