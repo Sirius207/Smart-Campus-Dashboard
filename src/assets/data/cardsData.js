@@ -8,7 +8,6 @@ export default {
       medium: 'https://smartcampus.csie.ncku.edu.tw/media/images/screenshot/zapper.png',
       large: 'https://smartcampus.csie.ncku.edu.tw/media/images/screenshot/zapper.png',
     },
-    defaultSize: 'medium',
     link: '#',
   },
   2: {
@@ -20,7 +19,6 @@ export default {
       medium: 'https://fakeimg.pl/400x400/',
       large: 'https://fakeimg.pl/600x400/',
     },
-    defaultSize: 'medium',
     link: '#',
   },
   3: {
@@ -45,7 +43,6 @@ export default {
       medium: 'https://fakeimg.pl/400x600/',
       large: 'https://fakeimg.pl/600x600/',
     },
-    defaultSize: 'medium',
     link: 'https://90828d2f.ngrok.io/students/',
   },
   5: {
@@ -58,7 +55,6 @@ export default {
       medium: 'https://fakeimg.pl/400x200/',
       large: 'https://fakeimg.pl/600x200/',
     },
-    defaultSize: 'medium',
     link: 'https://90828d2f.ngrok.io/students/',
   },
   6: {
@@ -71,7 +67,6 @@ export default {
       medium: 'https://fakeimg.pl/400x200/',
       large: 'https://fakeimg.pl/600x200/',
     },
-    defaultSize: 'small',
     link: 'https://90828d2f.ngrok.io/students/',
   },
 };
