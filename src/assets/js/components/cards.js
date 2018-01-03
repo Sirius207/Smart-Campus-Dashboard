@@ -12,7 +12,8 @@ import userCardOrder from '../../data/cardOrder';
       </a>`;
 
     const chartTemplate = `
-      <h1 align="right"></h1>
+      <h1 align="right" class="chart-title--large"></h1>
+      <h2 align="right" class="chart-title--small"></h2>
         <div tag="${cardData.questionId}" id="vote" href="${cardData.link}">
       </div>`;
 
@@ -70,11 +71,12 @@ import userCardOrder from '../../data/cardOrder';
           data: getData.option,
         });
         // get the previous node (title)
-        cardElement.prev().text(`${getData.title}`);
+        const headerSmall = cardElement.prev().text(`${getData.title}`);
+        headerSmall.prev().text(`${getData.question}`);
         cardElement.on('click', () => {
           const userData = JSON.parse(localStorage.getItem('userData'));
-          window.location.href =
-            `${cardElement.attr('href')}${userData.email}${cardElement.attr('tag')}/statistics`;
+          window.location.href = (!userData.email || userData.email.length === 0) ? '#' :
+            `${cardElement.attr('href')}${userData.email}/${cardElement.attr('tag')}`;
         });
         return voteChart;
       });
@@ -113,12 +115,14 @@ import userCardOrder from '../../data/cardOrder';
             element: cardDOM,
             data: getData.option,
           });
-          const header = cardDOM.previousElementSibling;
-          header.innerText = `${getData.title}`;
+          const headerSmall = cardDOM.previousElementSibling;
+          const headerLarger = headerSmall.previousElementSibling;
+          headerLarger.innerText = `${getData.title}`;
+          headerSmall.innerText = `${getData.question}`;
           cardDOM.addEventListener('click', () => {
             const userData = JSON.parse(localStorage.getItem('userData'));
-            window.location.href =
-              `${cardDOM.getAttribute('href')}${userData.nickname}${cardDOM.getAttribute('tag')}/statistics`;
+            window.location.href = (!userData.email || userData.email.length === 0) ? '#' :
+              `${cardDOM.getAttribute('href')}${userData.email}/${cardDOM.getAttribute('tag')}`;
           });
           return voteChart;
         });

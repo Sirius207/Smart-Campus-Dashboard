@@ -34,7 +34,7 @@
       opacity: 1;
       transition: $normal-transition-second;
       &:hover {
-        background-color: hsl(0, 100%, 70%); 
+        background-color: hsl(0, 100%, 70%);
       }
     }
   }
@@ -105,4 +105,14 @@
   &.switch--active {
     transform: translate3d(0, -120%, 0);
   }
+}
+.chart-title--large {
+  font-size: 1.4em;
+  font-weight: 200;
+  line-height: 2em;
+}
+.chart-title--small {
+  font-size: 1em;
+  color: #9e9eaa;
+  font-weight: 100;
 }
