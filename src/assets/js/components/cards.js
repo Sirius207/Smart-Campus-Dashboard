@@ -1,5 +1,6 @@
 import Packery from 'packery';
 import Draggabilly from 'draggabilly';
+import imagesLoaded from 'imagesloaded';
 import $ from 'jquery';
 import cardsData from '../../data/cardsData';
 import userCardOrder from '../../data/cardOrder';
@@ -14,7 +15,8 @@ import userCardOrder from '../../data/cardOrder';
     const chartTemplate = `
       <h1 align="right" class="chart-title--large"></h1>
       <h2 align="right" class="chart-title--small"></h2>
-        <div tag="${cardData.questionId}" id="vote" href="${cardData.link}">
+      <div
+        tag="${cardData.questionId}" id="vote" href="${cardData.link}">
       </div>`;
 
     const innerTemplate = (!cardData.type.localeCompare('vote')) ? chartTemplate : imageTemplate;
@@ -101,6 +103,9 @@ import userCardOrder from '../../data/cardOrder';
       columnWidth: '.grid-sizer',
       percentPosition: true,
       gutter: 0,
+    });
+    imagesLoaded(cardsList).on('progress', () => {
+      $grid.layout();
     });
     bindGridEvent($grid);
     return $('[id=vote]');

@@ -1,2 +1,2 @@
-import Morris from "./assets/vendors/morris";
+import './assets/vendors/morris';
 
