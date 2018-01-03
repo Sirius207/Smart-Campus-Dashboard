@@ -5,12 +5,12 @@ import $ from 'jquery';
     $('.avatar-pop').toggleClass('pop--active');
   });
 
-  $('#btn--signup').click(() => {
+  $('#menu--signup').click(() => {
     $('.signup-pop').toggleClass('pop--active');
   });
 
 
-  $('#btn--login').click(() => {
+  $('#menu--login').click(() => {
     $('.login-pop').toggleClass('pop--active');
   });
 

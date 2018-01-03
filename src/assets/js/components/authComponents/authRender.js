@@ -1,11 +1,8 @@
 import $ from 'jquery';
 import authComponents from './authComponents';
+import getUserData from './auth';
 
 (() => {
-  function getUserData() {
-    return localStorage.getItem('userData');
-  }
-
   function renderUserMenu(userData) {
     // append menu button
     $('.navbar-nav').append(authComponents.authMenuItemTemplate());
@@ -13,14 +10,17 @@ import authComponents from './authComponents';
     $('header').append(authComponents.userMenuTemplate(userData));
   }
 
+  function getAuthFormDom() {
+    const signupForm = authComponents.signupFormTemplate();
+    const loginForm = authComponents.loginFormTemplate();
+    return (signupForm + loginForm);
+  }
+
   function renderGuessMenu() {
     // append menu button
     $('.navbar-nav').append(authComponents.unAuthMenuItemTemplate());
     // append menu block
-    const signupForm = authComponents.signupFormTemplate();
-    const loginForm = authComponents.loginFormTemplate();
-    const formGroup = signupForm + loginForm;
-    $('header').append(formGroup);
+    $('header').append(getAuthFormDom());
   }
 
   function renderAuthComponents() {

@@ -1,6 +1,4 @@
 
-const BASE_URL = 'https://smartcampus.csie.ncku.edu.tw/smart_campus';
-
 function inputGroupTemplate(field) {
   return `
     <div class="form-row">
@@ -17,10 +15,13 @@ function formTemplate(formMeta, fields) {
     <div class="popover authForm-pop ${formMeta.url}-pop">
       <div class="popover-inner">
         <h2 class="form-title">${formMeta.title}</h2>
-        <form action="${BASE_URL}/${formMeta.url}/" method="${formMeta.method}">
+        <form id="form--${formMeta.url}">
           ${fields.map(inputGroupTemplate).join('')}
           <div class="form-row">
-            <button class="btn--submit">Submit</button>
+            <div id="errorMsg--${formMeta.url}" class="flash-error"></div>
+          </div>
+          <div class="form-row">
+            <button id="btn--${formMeta.url}" class="btn--submit">Submit</button>
           </div>
         </form>
       </div>
@@ -87,8 +88,8 @@ function authMenuItemTemplate(imageSrc) {
 
 function unAuthMenuItemTemplate() {
   return `
-    <li class="nav-item"><button id="btn--signup" class="btn btn--reset btn--icon">Signup</button></li>
-    <li class="nav-item"><button id="btn--login" class="btn btn--reset btn--icon">Login</button></li>
+    <li class="nav-item"><button id="menu--signup" class="btn btn--reset btn--icon">Signup</button></li>
+    <li class="nav-item"><button id="menu--login" class="btn btn--reset btn--icon">Login</button></li>
   `;
 }
 
