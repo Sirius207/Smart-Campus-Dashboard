@@ -33,7 +33,7 @@ export default {
       large: 'https://fakeimg.pl/600x200/',
     },
     defaultSize: 'large',
-    link: '#',
+    link: 'https://smartcampus.csie.ncku.edu.tw/heatview/',
   },
   4: {
     id: 4,

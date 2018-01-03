@@ -6,22 +6,25 @@ import userCardOrder from '../../data/cardOrder';
 
 (() => {
   function cardTemplate(cardData, size = 'medium') {
-    let card = `<div class="card grid-item grid-item--${size}">
-                    <div class="card-inner">`
-    if (!cardData.type.localeCompare('vote')) {
-      card += `<h1 align="right"></h1>
-                <div tag="${cardData.questionId}" id="vote" href="${cardData.link}">
-                </div>`;
-    }
-    else {
-      card += `<a href="${cardData.link}">
-                  <img src="${cardData.size[size]}">
-                </a>`;
-    }
-    card += `</div>
-              <div class="card-removeBtn">X</div>
-              </div>`;
-    return card;
+    const imageTemplate = `
+      <a href="${cardData.link}">
+        <img src="${cardData.size[size]}">
+      </a>`;
+
+    const chartTemplate = `
+      <h1 align="right"></h1>
+        <div tag="${cardData.questionId}" id="vote" href="${cardData.link}">
+      </div>`;
+
+    const innerTemplate = (!cardData.type.localeCompare('vote')) ? chartTemplate : imageTemplate;
+
+    return `
+      <div class="card grid-item grid-item--${size}">
+        <div class="card-inner">
+          ${innerTemplate}
+        </div>
+        <div class="card-removeBtn">X</div>
+      </div>`;
   }
 
   function setAllCardsDOM(dataList) {
@@ -71,7 +74,7 @@ import userCardOrder from '../../data/cardOrder';
         cardElement.on('click', () => {
           const userData = JSON.parse(localStorage.getItem('userData'));
           window.location.href =
-            `${cardElement.attr('href')}${userData.nickname}${cardElement.attr('tag')}/statistics`;
+            `${cardElement.attr('href')}${userData.email}${cardElement.attr('tag')}/statistics`;
         });
         return voteChart;
       });

@@ -75,12 +75,12 @@ function userMenuTemplate() {
 }
 
 // avatar image e.g. https://cdn-images-1.medium.com/fit/c/32/32/1*EhFnVbXnRoEzBI6u97Bt7w.jpeg" alt="avatar
-function authNavItemTemplate(imageSrc) {
+function authNavItemTemplate() {
   return `
     <li class="nav-item">
       <button class="btn btn--reset">
         <div class="avatar">
-          <img class="avatar-img" src="${imageSrc}">
+          <img class="avatar-img" src="./assets/media/avatar.svg" alt="avatar">
         </div>
       </button>
     </li>`;

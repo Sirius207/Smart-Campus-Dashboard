@@ -19,8 +19,8 @@ A dashboard to display all applications of smart campus.
 - - [x] Add Cards
 - - [ ] Resize cards
 - Func
-- - [ ] Signup
-- - [ ] Login
+- - [x] Signup
+- - [x] Login
 
 
 ## Setup
