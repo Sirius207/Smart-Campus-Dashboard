@@ -59,7 +59,7 @@ export default {
   },
   6: {
     id: 6,
-    title: 'Vote-c',
+    title: '你贊成系K館的成立嗎？',
     type: 'vote',
     questionId: '5a260bc273e4501c0ccae797',
     size: {
