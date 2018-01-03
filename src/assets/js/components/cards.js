@@ -1,30 +1,26 @@
 import Packery from 'packery';
 import Draggabilly from 'draggabilly';
 import $ from 'jquery';
-import Chart from 'chart.js';
 import cardsData from '../../data/cardsData';
 import userCardOrder from '../../data/cardOrder';
-import defaultChartConfig from '../../data/chartConfig';
 
 (() => {
   function cardTemplate(cardData, size = 'medium') {
+    let card = `<div class="card grid-item grid-item--${size}">
+                    <div class="card-inner">`
     if (!cardData.type.localeCompare('vote')) {
-      const card = `<div class="card grid-item grid-item--${size}">
-                      <canvas id="${cardData.questionId}" width="400" height="400"
-                        href="${cardData.link}">
-                      </canvas>
-                      <div class="card-removeBtn">X</div>
-                    </div>`;
-      return card;
+      card += `<h1 align="right"></h1>
+                <div tag="${cardData.questionId}" id="vote" href="${cardData.link}">
+                </div>`;
     }
-    const card = `<div class="card grid-item grid-item--${size}">
-                    <div class="card-inner">
-                      <a href="${cardData.link}">
-                        <img src="${cardData.size[size]}">
-                      </a>
-                    </div>
-                    <div class="card-removeBtn">X</div>
-                  </div>`;
+    else {
+      card += `<a href="${cardData.link}">
+                  <img src="${cardData.size[size]}">
+                </a>`;
+    }
+    card += `</div>
+              <div class="card-removeBtn">X</div>
+              </div>`;
     return card;
   }
 
@@ -59,9 +55,25 @@ import defaultChartConfig from '../../data/chartConfig';
     // bind add event to grid & addCard buttons
     $('.cards-pool').on('click', '.pool-btn', (event) => {
       const cardID = event.target.dataset.id;
-      const cardDOM = cardTemplate(cardsData[cardID]);
+      const cardDOM = $(cardTemplate(cardsData[cardID]));
       // append new card to grid
       $('.grid').append(cardDOM);
+      // get a node which is child of appended to .grid
+      const cardElement = cardDOM.find('[id=vote]');
+      $.get(`${cardElement.attr('href')}${cardElement.attr('tag')}/statistics`, (getData) => {
+        // already from vendors import Morris
+        const voteChart = new Morris.Donut({
+          element: cardElement,
+          data: getData.option,
+        });
+        // get the previous node (title)
+        cardElement.prev().text(`${getData.title}`);
+        cardElement.addEventListener('click', () => {
+          window.location.href =
+            `${cardElement.attr('href')}${localStorage.getItem('userName')}${cardElement.attr('tag')}/statistics`;
+        });
+        return voteChart;
+      });
       const newCard = $('.grid-item').last();
       $grid.appended(newCard);
       makeCardDraggable($grid, newCard[0]);
@@ -85,39 +97,23 @@ import defaultChartConfig from '../../data/chartConfig';
       gutter: 0,
     });
     bindGridEvent($grid);
-    return $('canvas');
+    return $('[id=vote]');
   }
 
   $(document).ready(() => {
     $.when(initCardsLayout()).done((p) => {
-      $.each(p, (i, e) => {
-        $.get(`${e.getAttribute('href')}${e.getAttribute('id')}/statistics`, (getData) => {
-          // parse the array
-          const dataLabels = [];
-          const count = [];
-          getData.option.forEach((element) => {
-            dataLabels.push(element.label);
-            count.push(element.count);
+      $.each(p, (i, cardDOM) => {
+        $.get(`${cardDOM.getAttribute('href')}${cardDOM.getAttribute('tag')}/statistics`, (getData) => {
+          // already from vendors import Morris
+          const voteChart = new Morris.Donut({
+            element: cardDOM,
+            data: getData.option,
           });
-          // combine the config
-          const dataset = {
-            datasets: [
-              Object.assign({
-                data: count,
-              }, defaultChartConfig)],
-            labels: dataLabels,
-          };
-
-          const voteChart = new Chart(e, {
-            type: 'doughnut',
-            data: dataset,
-            options: {
-              // navigate to the vote page
-              onClick: () => {
-                window.location.href =
-                  `${e.getAttribute('href')}${localStorage.getItem('userName')}${e.getAttribute('id')}/statistics`;
-              },
-            },
+          const header = cardDOM.previousElementSibling;
+          header.innerText = `${getData.title}`;
+          cardDOM.addEventListener('click', () => {
+            window.location.href =
+              `${cardDOM.getAttribute('href')}${localStorage.getItem('userName')}${cardDOM.getAttribute('tag')}/statistics`;
           });
           return voteChart;
         });
