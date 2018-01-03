@@ -4,9 +4,9 @@ export default {
     title: 'MosquitoMap',
     type: 'image',
     size: {
-      small: 'https://fakeimg.pl/200x400/',
-      medium: 'https://fakeimg.pl/400x400/',
-      large: 'https://fakeimg.pl/600x400/',
+      small: 'https://smartcampus.csie.ncku.edu.tw/media/images/screenshot/zapper.png',
+      medium: 'https://smartcampus.csie.ncku.edu.tw/media/images/screenshot/zapper.png',
+      large: 'https://smartcampus.csie.ncku.edu.tw/media/images/screenshot/zapper.png',
     },
     defaultSize: 'medium',
     link: '#',
