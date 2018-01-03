@@ -90,8 +90,8 @@ import userCardOrder from '../../data/cardOrder';
     });
   }
 
-  function drawSvg() {
-    return new Promise((resolve)=>{
+  function drawVoteSvg() {
+    return new Promise((resolve) => {
       $.each($('[id=vote]'), (i, cardDOM) => {
         $.get(`${cardDOM.getAttribute('href')}${cardDOM.getAttribute('tag')}/statistics`, (getData) => {
           // already from vendors import Morris
@@ -127,7 +127,7 @@ import userCardOrder from '../../data/cardOrder';
       percentPosition: true,
       gutter: 0,
     });
-    await drawSvg();
+    await drawVoteSvg();
     imagesLoaded(cardsList).on('progress', () => {
       $grid.layout();
     });
