@@ -30,10 +30,10 @@ import userCardOrder from '../../data/cardOrder';
       </div>`;
   }
 
-  function setAllCardsDOM(dataList) {
-    return dataList.reduce((cardsDom, cardData) => {
+  function setAllCardsDOM(cardOrderList) {
+    return cardOrderList.reduce((cardsDom, cardData) => {
       let currentDom = cardsDom;
-      currentDom += cardTemplate(cardsData[cardData.id], cardData.defaultSize);
+      currentDom += cardTemplate(cardsData[cardData.id], cardData.size);
       return currentDom;
     }, '');
   }
