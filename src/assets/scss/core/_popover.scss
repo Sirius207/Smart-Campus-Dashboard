@@ -8,6 +8,20 @@ $popOver-top: 60px;
   opacity: 0;
   pointer-events: none;
 
+  &::before {
+    display: inline-block;
+    position: absolute;
+    top: -15px;
+    right: 15px;
+    z-index: -1;
+    width: 15px;
+    height: 15px;
+    content: '';
+    background-color: #fff;
+    box-shadow: -1px -1px 1px -1px rgba(0,0,0,0.4);
+    transform: rotate(45deg) translate(6px, 6px);
+  }
+
   // user menu block
   &.avatar-pop {
     top: $popOver-top;
@@ -15,20 +29,6 @@ $popOver-top: 60px;
     @extend %general-block-frame;
     transition: 0.2s;
     transition-timing-function: cubic-bezier(0, 1.26, 1, 1);
-
-    &::before {
-      display: inline-block;
-      position: absolute;
-      top: -15px;
-      right: 15px;
-      z-index: -1;
-      width: 15px;
-      height: 15px;
-      content: '';
-      background-color: #fff;
-      box-shadow: -1px -1px 1px -1px rgba(0,0,0,0.4);
-      transform: rotate(45deg) translate(6px, 6px);
-    }
   }
   // login & signup form block
   &.authForm-pop {
