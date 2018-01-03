@@ -8,7 +8,7 @@ export default {
       medium: './assets/media/map.png',
       large: 'https://smartcampus.csie.ncku.edu.tw/media/images/screenshot/zapper.png',
     },
-    link: '#',
+    link: 'https://mosquitokiller.csie.ncku.edu.tw/zapperTown/',
   },
   2: {
     id: 2,
