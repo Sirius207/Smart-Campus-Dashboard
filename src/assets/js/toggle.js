@@ -6,7 +6,7 @@ import $ from 'jquery';
     $(list[1]).toggleClass('pop--active');
   }
 
-  $('#btn--topAvatar').click(() => {
+  $('#menu--topAvatar').click(() => {
     const list = ['.setup-pop', '.avatar-pop'];
     toggleAll(list);
   });
@@ -21,7 +21,7 @@ import $ from 'jquery';
     toggleAll(list);
   });
 
-  $('#btn--setup').click(() => {
+  $('#menu--setup').click(() => {
     const list = ['.avatar-pop', '.setup-pop'];
     toggleAll(list);
   });

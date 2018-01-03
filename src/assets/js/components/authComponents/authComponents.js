@@ -81,7 +81,7 @@ function userMenuTemplate() {
       <div class="popover-inner">
         <ul class="list">
           <li class="list-item"><a class="btn" href="#">Profile</a></li>
-          <li class="list-item"><button id="btn--setup" class="btn btn--reset" >Setting</button></li>
+          <li class="list-item"><button id="menu--setup" class="btn btn--reset" >Setting</button></li>
           <li class="list-item"><button id="btn--logout" class="btn btn--reset" >Logout</button></li>
         </ul>
       </div>
@@ -92,7 +92,7 @@ function userMenuTemplate() {
 function authNavItemTemplate() {
   return `
     <li class="nav-item">
-      <button id="btn--topAvatar" class="btn btn--reset">
+      <button id="menu--topAvatar" class="btn btn--reset">
         <div class="avatar">
           <img class="avatar-img" src="./assets/media/avatar.svg" alt="avatar">
         </div>

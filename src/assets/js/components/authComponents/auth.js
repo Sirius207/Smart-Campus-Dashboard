@@ -88,6 +88,13 @@ export default function getUserData() {
     window.location.reload();
   }
 
+  async function setup(formData) {
+    const userData = getUserData();
+    const newUserData = Object.assign({}, userData, formData);
+    setUserData(newUserData);
+    window.location.reload();
+  }
+
   /**
    * Form Method
    */
@@ -111,7 +118,7 @@ export default function getUserData() {
     return formData;
   }
   /**
-   * Bind Auth Click Events
+   * Bind unAuth Click Events
    */
   $('#btn--login').click((event) => {
     event.preventDefault();
@@ -130,4 +137,16 @@ export default function getUserData() {
   });
 
   $('#btn--logout').click(logout);
+
+  /**
+   * Bind need Auth Click Events
+   */
+  $('#btn--setup').click((event) => {
+    event.preventDefault();
+    const formId = 'form--setup';
+    const formFields = ['zapperId'];
+    const formData = getFormData(formId, formFields);
+    setup(formData);
+  });
+
 })();
