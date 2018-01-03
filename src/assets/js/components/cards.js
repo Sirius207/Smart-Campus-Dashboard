@@ -90,30 +90,9 @@ import userCardOrder from '../../data/cardOrder';
     });
   }
 
-  // Make cards Draggable & display with masonry layout
-  function initCardsLayout() {
-    // render cards
-    const cardsDom = setAllCardsDOM(userCardOrder.order);
-    $('.grid').append(cardsDom);
-
-    // reorder cards
-    const cardsList = document.querySelector('.grid');
-    const $grid = new Packery(cardsList, {
-      itemSelector: '.grid-item',
-      columnWidth: '.grid-sizer',
-      percentPosition: true,
-      gutter: 0,
-    });
-    imagesLoaded(cardsList).on('progress', () => {
-      $grid.layout();
-    });
-    bindGridEvent($grid);
-    return $('[id=vote]');
-  }
-
-  $(document).ready(() => {
-    $.when(initCardsLayout()).done((p) => {
-      $.each(p, (i, cardDOM) => {
+  function drawSvg() {
+    return new Promise((resolve)=>{
+      $.each($('[id=vote]'), (i, cardDOM) => {
         $.get(`${cardDOM.getAttribute('href')}${cardDOM.getAttribute('tag')}/statistics`, (getData) => {
           // already from vendors import Morris
           const voteChart = new Morris.Donut({
@@ -129,10 +108,35 @@ import userCardOrder from '../../data/cardOrder';
             window.location.href = (!userData.email || userData.email.length === 0) ? '#' :
               `${cardDOM.getAttribute('href')}${userData.email}/${cardDOM.getAttribute('tag')}`;
           });
-          return voteChart;
+          resolve(voteChart);
         });
       });
     });
+  }
+  // Make cards Draggable & display with masonry layout
+  async function initCardsLayout() {
+    // render cards
+    const cardsDom = setAllCardsDOM(userCardOrder.order);
+    $('.grid').append(cardsDom);
+
+    // reorder cards
+    const cardsList = document.querySelector('.grid');
+    const $grid = new Packery(cardsList, {
+      itemSelector: '.grid-item',
+      columnWidth: '.grid-sizer',
+      percentPosition: true,
+      gutter: 0,
+    });
+    await drawSvg();
+    imagesLoaded(cardsList).on('progress', () => {
+      $grid.layout();
+    });
+    bindGridEvent($grid);
+    return $('[id=vote]');
+  }
+
+  $(document).ready(() => {
+    initCardsLayout();
     // remove loader when loading complete
     $('.loader').remove();
   });
