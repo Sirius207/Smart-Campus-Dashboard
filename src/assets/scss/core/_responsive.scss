@@ -1,0 +1,52 @@
+@media screen and (max-width: 480px) {
+  .navbar {
+    width: 100%;
+    justify-content: center;
+    
+    .navbar-brand img {
+      width: 200px;
+    }
+
+    .btn--nav {
+      position: absolute;
+      display: inline-block;
+      right: 10px;
+    }
+
+    .navbar-nav {
+      opacity: 0;
+      pointer-events: none;
+      display: flex;
+      position: absolute;
+      right: 0;
+      top: 36px;
+      z-index: 2;
+      background-color: #fff;
+      box-shadow: $normal-shadow;
+      border-radius: 3px;
+
+      .nav-item {
+        padding: 10px 20px;
+        border-left: 1px solid gray;
+      }
+
+      &.pop--active {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
+  }
+  .popover.authForm-pop {
+    width: 100%;
+    right: 0;
+    left: 0;
+    margin: auto;
+    z-index: 1;
+    padding: 20px 0;
+  }
+
+  .popover.avatar-pop {
+    top: 50px;
+    right: 10px;
+  }
+}

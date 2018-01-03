@@ -34,5 +34,16 @@ import $ from 'jquery';
     const btnText = ($('.cards-pool').hasClass('pool--active')) ? 'v' : '+';
     $('.cards-pool--switch button').text(btnText);
   });
+
+  $('#menu--nav').click(() => {
+    if ($('.popover').hasClass('avatar-pop')) {
+      $('.avatar-pop').toggleClass('pop--active');
+    } else {
+      $('.navbar-nav').toggleClass('pop--active');
+    }
+    $('.setup-pop').removeClass('pop--active');
+    $('.login-pop').removeClass('pop--active');
+    $('.signup-pop').removeClass('pop--active');
+  });
 }
 )();
