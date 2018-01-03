@@ -11,12 +11,14 @@
   }
 
   .card-title {
-    position: absolute;
-    left: 50px;
-    top: 50px;
-    color: #fff;
-    background-color: rgb(47, 47, 47);
-    padding: 10px;
+    padding-right: 1rem;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid gray;
+    color: rgba(0,0,0,0.9);
+    font-size: 1.4em;
+    font-weight: 200;
+    line-height: 2em;
+    text-align: right;
   }
 
   img {
@@ -121,6 +123,7 @@
 }
 .chart-title--large {
   margin: 0 1rem;
+  color: rgba(0,0,0,0.9);
   font-size: 1.4em;
   font-weight: 200;
   line-height: 2em;
