@@ -58,7 +58,7 @@ export default {
       medium: 'https://fakeimg.pl/400x200/',
       large: 'https://fakeimg.pl/600x200/',
     },
-    defaultSize: 'small',
+    defaultSize: 'medium',
     link: 'https://90828d2f.ngrok.io/students/',
   },
   6: {

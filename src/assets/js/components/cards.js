@@ -33,7 +33,7 @@ import userCardOrder from '../../data/cardOrder';
   function setAllCardsDOM(dataList) {
     return dataList.reduce((cardsDom, cardData) => {
       let currentDom = cardsDom;
-      currentDom += cardTemplate(cardsData[cardData.id], cardData.size);
+      currentDom += cardTemplate(cardsData[cardData.id], cardData.defaultSize);
       return currentDom;
     }, '');
   }
