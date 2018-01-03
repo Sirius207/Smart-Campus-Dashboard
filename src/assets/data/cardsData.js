@@ -17,7 +17,7 @@ export default {
     size: {
       small: 'https://fakeimg.pl/200x400/',
       medium: 'https://fakeimg.pl/400x400/',
-      large: 'https://fakeimg.pl/600x400/',
+      large: './assets/media/zapper.png',
     },
     link: '#',
   },
@@ -28,7 +28,7 @@ export default {
     size: {
       small: 'https://fakeimg.pl/200x200/',
       medium: 'https://fakeimg.pl/400x200/',
-      large: 'https://fakeimg.pl/600x200/',
+      large: './assets/media/path.png',
     },
     defaultSize: 'large',
     link: 'https://smartcampus.csie.ncku.edu.tw/heatview/',
