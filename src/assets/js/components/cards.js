@@ -9,6 +9,7 @@ import userCardOrder from '../../data/cardOrder';
   function cardTemplate(cardData, size = 'medium') {
     const imageTemplate = `
       <a href="${cardData.link}">
+        <h2 class="card-title">${cardData.title}</h2>
         <img src="${cardData.size[size]}">
       </a>`;
 

@@ -5,8 +5,18 @@
 
   .card-inner {
     margin: $normal-spacing;
+    padding: $normal-spacing*2;
     background-color: rgba(255,255,255, 0.9);
     box-shadow: $normal-shadow;
+  }
+
+  .card-title {
+    position: absolute;
+    left: 50px;
+    top: 50px;
+    color: #fff;
+    background-color: rgb(47, 47, 47);
+    padding: 10px;
   }
 
   img {

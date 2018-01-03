@@ -1,18 +1,18 @@
 export default {
   1: {
     id: 1,
-    title: 'MosquitoMap',
+    title: '物聯網蚊媒地圖',
     type: 'image',
     size: {
       small: 'https://smartcampus.csie.ncku.edu.tw/media/images/screenshot/zapper.png',
-      medium: 'https://smartcampus.csie.ncku.edu.tw/media/images/screenshot/zapper.png',
+      medium: './assets/media/map.png',
       large: 'https://smartcampus.csie.ncku.edu.tw/media/images/screenshot/zapper.png',
     },
     link: '#',
   },
   2: {
     id: 2,
-    title: 'MosquitoZapper',
+    title: '我的捕蚊燈',
     type: 'image',
     size: {
       small: 'https://fakeimg.pl/200x400/',
@@ -23,7 +23,7 @@ export default {
   },
   3: {
     id: 3,
-    title: 'Path',
+    title: '校園導覽路徑',
     type: 'image',
     size: {
       small: 'https://fakeimg.pl/200x200/',
