@@ -5,6 +5,8 @@
 
   .card-inner {
     margin: $normal-spacing;
+    background-color: rgba(255,255,255, 0.9);
+    box-shadow: $normal-shadow;
   }
 
   img {
@@ -108,12 +110,15 @@
   }
 }
 .chart-title--large {
+  margin: 0 1rem;
   font-size: 1.4em;
   font-weight: 200;
   line-height: 2em;
 }
 .chart-title--small {
+  margin: 0 1rem;
   font-size: 1em;
-  color: #9e9eaa;
+  color: #6b6b77;
   font-weight: 100;
+  text-shadow: 0 0 0 grey;
 }

@@ -49,7 +49,7 @@ export default {
     id: 5,
     title: 'Vote-b',
     type: 'vote',
-    questionId: '5a260bc273e4501c0ccae797',
+    questionId: '5a4ce12512529532a4a58b29',
     size: {
       small: 'https://fakeimg.pl/200x200/',
       medium: 'https://fakeimg.pl/400x200/',
