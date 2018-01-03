@@ -8,6 +8,10 @@ const HEADERS = {
   'Content-Type': 'application/x-www-form-urlencoded; charset=utf-8',
 };
 
+const ValidateFailMsg = 'Form validation fail';
+
+
+// Local Storage Method
 export function setUserData(userData) {
   localStorage.setItem('userData', JSON.stringify(userData));
 }
@@ -32,9 +36,10 @@ export default function getUserData() {
 
   async function getDataFromResponse(response) {
     if (response.status !== 200) {
-      throw new Error(response.status);
+      const errorMsg = await response.text();
+      throw new Error(errorMsg);
     } else {
-      return response.json();
+      return response.json() || response.text();
     }
   }
 
@@ -43,30 +48,38 @@ export default function getUserData() {
       const response = await request(`${BASE_URL}/${route}/`, 'POST', body);
       const userData = await getDataFromResponse(response);
       setUserData(userData);
+      window.location.reload();
     } catch (error) {
-      $(`#errorMsg--${route}`).text('Incorrect username or password.');
+      $(`#errorMsg--${route}`).text(error.message);
       $(`#errorMsg--${route}`).addClass('active');
     }
   }
 
-  function signup(formData) {
-    authProcess('signup', formData);
+  async function signup(formData) {
+    await authProcess('signup', formData);
   }
 
-  function login(formData) {
-    authProcess('login', formData);
+  async function login(formData) {
+    await authProcess('login', formData);
   }
 
-  function logout() {
-    request(`${BASE_URL}/logout/`, 'POST');
+  async function logout() {
+    await request(`${BASE_URL}/logout/`, 'POST');
     deleteUserData();
+    window.location.reload();
+  }
+
+  function checkFormValue(form) {
+    if (!form.checkValidity()) {
+      form.reportValidity();
+      throw new Error(ValidateFailMsg);
+    }
   }
 
   function getFormData(formId, formFields) {
     const form = document.getElementById(formId);
     // validate form values
-    form.checkValidity();
-    form.reportValidity();
+    checkFormValue(form);
     // get form values
     const formData = formFields.reduce((prevForm, field) => {
       const currentForm = prevForm;
@@ -78,7 +91,6 @@ export default function getUserData() {
 
   $('#btn--login').click((event) => {
     event.preventDefault();
-
     const formId = 'form--login';
     const formFields = ['email', 'password'];
     const formData = getFormData(formId, formFields);
@@ -93,4 +105,7 @@ export default function getUserData() {
     signup(formData);
   });
 
+  $('#btn--logout').click(()=>{
+    logout();
+  });
 })();

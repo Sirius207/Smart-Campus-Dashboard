@@ -68,7 +68,7 @@ function userMenuTemplate() {
         <ul class="list">
           <li class="list-item"><a class="btn" href="#">Profile</a></li>
           <li class="list-item"><a class="btn" href="#">Setting</a></li>
-          <li class="list-item"><a class="btn" href="#">Logout </a></li>
+          <li class="list-item"><button id="btn--logout" class="btn btn--reset" >Logout</button></li>
         </ul>
       </div>
     </div>`;
