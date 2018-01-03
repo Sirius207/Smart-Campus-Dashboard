@@ -3,14 +3,20 @@ import authComponents from './authComponents';
 import getUserData from './auth';
 
 (() => {
-  function renderUserMenu(userData) {
+  function getAuthFormDom() {
+    const userMenu = authComponents.userMenuTemplate();
+    const setupForm = authComponents.setupFormTemplate();
+    return (userMenu + setupForm);
+  }
+
+  function renderUserMenu() {
     // append menu button
     $('.navbar-nav').append(authComponents.authNavItemTemplate());
     // append menu block
-    $('header').append(authComponents.userMenuTemplate(userData));
+    $('header').append(getAuthFormDom());
   }
 
-  function getAuthFormDom() {
+  function getUnAuthFormDom() {
     const signupForm = authComponents.signupFormTemplate();
     const loginForm = authComponents.loginFormTemplate();
     return (signupForm + loginForm);
@@ -20,7 +26,7 @@ import getUserData from './auth';
     // append menu button
     $('.navbar-nav').append(authComponents.unAuthNavItemTemplate());
     // append menu block
-    $('header').append(getAuthFormDom());
+    $('header').append(getUnAuthFormDom());
   }
 
   /**

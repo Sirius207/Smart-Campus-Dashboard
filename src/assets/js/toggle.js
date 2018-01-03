@@ -1,18 +1,29 @@
 import $ from 'jquery';
 
 (() => {
-  $('.avatar').click(() => {
-    $('.avatar-pop').toggleClass('pop--active');
+  function toggleAll(list) {
+    $(list[0]).removeClass('pop--active');
+    $(list[1]).toggleClass('pop--active');
+  }
+
+  $('#btn--topAvatar').click(() => {
+    const list = ['.setup-pop', '.avatar-pop'];
+    toggleAll(list);
   });
 
   $('#menu--signup').click(() => {
-    $('.login-pop').removeClass('pop--active');
-    $('.signup-pop').toggleClass('pop--active');
+    const list = ['.login-pop', '.signup-pop'];
+    toggleAll(list);
   });
 
   $('#menu--login').click(() => {
-    $('.signup-pop').removeClass('pop--active');
-    $('.login-pop').toggleClass('pop--active');
+    const list = ['.signup-pop', '.login-pop'];
+    toggleAll(list);
+  });
+
+  $('#btn--setup').click(() => {
+    const list = ['.avatar-pop', '.setup-pop'];
+    toggleAll(list);
   });
 
   $('.cards-pool--switch button').click(() => {

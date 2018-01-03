@@ -59,6 +59,20 @@ function signupFormTemplate() {
   return formTemplate(formData.formMeta, formData.fields);
 }
 
+function setupFormTemplate() {
+  const formData = {
+    formMeta: {
+      url: 'setup',
+      method: 'post',
+      title: 'Setup',
+    },
+    fields: [
+      { label: 'zapperId', type: 'text' },
+    ],
+  };
+  return formTemplate(formData.formMeta, formData.fields);
+}
+
 // Pop Menu of Avatar
 // @Todo: Update links
 function userMenuTemplate() {
@@ -67,7 +81,7 @@ function userMenuTemplate() {
       <div class="popover-inner">
         <ul class="list">
           <li class="list-item"><a class="btn" href="#">Profile</a></li>
-          <li class="list-item"><a class="btn" href="#">Setting</a></li>
+          <li class="list-item"><button id="btn--setup" class="btn btn--reset" >Setting</button></li>
           <li class="list-item"><button id="btn--logout" class="btn btn--reset" >Logout</button></li>
         </ul>
       </div>
@@ -78,7 +92,7 @@ function userMenuTemplate() {
 function authNavItemTemplate() {
   return `
     <li class="nav-item">
-      <button class="btn btn--reset">
+      <button id="btn--topAvatar" class="btn btn--reset">
         <div class="avatar">
           <img class="avatar-img" src="./assets/media/avatar.svg" alt="avatar">
         </div>
@@ -99,5 +113,6 @@ export default {
   userMenuTemplate,
   authNavItemTemplate,
   unAuthNavItemTemplate,
+  setupFormTemplate,
 };
 
