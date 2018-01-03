@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "dev": "webpack-dev-server --config webpack.config.dev.js",
-    "build": "webpack -p --config webpack.config.prod.js"
+    "build": "webpack -p --config webpack.config.prod.js",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
   },
   "repository": {
     "type": "git",
@@ -45,6 +47,8 @@
     "chart.js": "^2.7.1",
     "draggabilly": "^2.1.1",
     "jquery": "^3.2.1",
-    "packery": "^2.1.1"
-  }
+    "packery": "^2.1.1",
+    "snyk": "^1.64.0"
+  },
+  "snyk": true
 }
