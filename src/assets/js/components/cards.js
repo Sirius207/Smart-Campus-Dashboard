@@ -68,9 +68,10 @@ import userCardOrder from '../../data/cardOrder';
         });
         // get the previous node (title)
         cardElement.prev().text(`${getData.title}`);
-        cardElement.addEventListener('click', () => {
+        cardElement.on('click', () => {
+          const userData = JSON.parse(localStorage.getItem('userData'));
           window.location.href =
-            `${cardElement.attr('href')}${localStorage.getItem('userName')}${cardElement.attr('tag')}/statistics`;
+            `${cardElement.attr('href')}${userData.nickname}${cardElement.attr('tag')}/statistics`;
         });
         return voteChart;
       });
@@ -112,8 +113,9 @@ import userCardOrder from '../../data/cardOrder';
           const header = cardDOM.previousElementSibling;
           header.innerText = `${getData.title}`;
           cardDOM.addEventListener('click', () => {
+            const userData = JSON.parse(localStorage.getItem('userData'));
             window.location.href =
-              `${cardDOM.getAttribute('href')}${localStorage.getItem('userName')}${cardDOM.getAttribute('tag')}/statistics`;
+              `${cardDOM.getAttribute('href')}${userData.nickname}${cardDOM.getAttribute('tag')}/statistics`;
           });
           return voteChart;
         });
