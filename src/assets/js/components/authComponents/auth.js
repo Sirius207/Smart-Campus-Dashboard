@@ -19,10 +19,11 @@ export default function getUserData() {
 
 (() => {
   /**
-   * Constants
+   * Constants used for request & form.
    */
   const BASE_URL = 'https://smartcampus.csie.ncku.edu.tw/smart_campus';
   const ValidateFailMsg = 'Form validation fail';
+
   /**
    * Request Method
    */
@@ -33,12 +34,13 @@ export default function getUserData() {
     };
     const content = { method, headers: HEADERS }; // credentials: 'include',
     if (payload) {
+      // serialize the payload object
       content.body = $.param(payload);
     }
     return fetch(uri, content);
   }
 
-  async function setDataByContentType(response) {
+  async function decodeDataByContentType(response) {
     const contentType = {
       json: 'application/json; charset=utf-8',
       text: 'text/html; charset=utf-8',
@@ -53,7 +55,7 @@ export default function getUserData() {
       const errorMsg = await response.text();
       throw new Error(errorMsg);
     } else {
-      return setDataByContentType(response);
+      return decodeDataByContentType(response);
     }
   }
 
@@ -66,6 +68,7 @@ export default function getUserData() {
       }
       window.location.reload();
     } catch (error) {
+      // display error flash message on form
       $(`#errorMsg--${route}`).text(error.message);
       $(`#errorMsg--${route}`).addClass('active');
     }

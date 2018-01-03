@@ -75,7 +75,7 @@ function userMenuTemplate() {
 }
 
 // avatar image e.g. https://cdn-images-1.medium.com/fit/c/32/32/1*EhFnVbXnRoEzBI6u97Bt7w.jpeg" alt="avatar
-function authMenuItemTemplate(imageSrc) {
+function authNavItemTemplate(imageSrc) {
   return `
     <li class="nav-item">
       <button class="btn btn--reset">
@@ -86,7 +86,7 @@ function authMenuItemTemplate(imageSrc) {
     </li>`;
 }
 
-function unAuthMenuItemTemplate() {
+function unAuthNavItemTemplate() {
   return `
     <li class="nav-item"><button id="menu--signup" class="btn btn--reset btn--icon">Signup</button></li>
     <li class="nav-item"><button id="menu--login" class="btn btn--reset btn--icon">Login</button></li>
@@ -97,7 +97,7 @@ export default {
   loginFormTemplate,
   signupFormTemplate,
   userMenuTemplate,
-  authMenuItemTemplate,
-  unAuthMenuItemTemplate,
+  authNavItemTemplate,
+  unAuthNavItemTemplate,
 };
 

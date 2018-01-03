@@ -5,7 +5,7 @@ import getUserData from './auth';
 (() => {
   function renderUserMenu(userData) {
     // append menu button
-    $('.navbar-nav').append(authComponents.authMenuItemTemplate());
+    $('.navbar-nav').append(authComponents.authNavItemTemplate());
     // append menu block
     $('header').append(authComponents.userMenuTemplate(userData));
   }
@@ -18,11 +18,14 @@ import getUserData from './auth';
 
   function renderGuessMenu() {
     // append menu button
-    $('.navbar-nav').append(authComponents.unAuthMenuItemTemplate());
+    $('.navbar-nav').append(authComponents.unAuthNavItemTemplate());
     // append menu block
     $('header').append(getAuthFormDom());
   }
 
+  /**
+   * Check is login and render Nav Items.
+   */
   function renderAuthComponents() {
     const userData = getUserData();
     if (userData) {
