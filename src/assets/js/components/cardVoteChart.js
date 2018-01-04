@@ -1,4 +1,3 @@
-
 import $ from 'jquery';
 
 const QUESTION_URL = 'https://90828d2f.ngrok.io/students/';
