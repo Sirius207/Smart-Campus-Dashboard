@@ -4,6 +4,7 @@ import imagesLoaded from 'imagesloaded';
 import $ from 'jquery';
 import cardsData from '../../data/cardsData';
 import userCardOrder from '../../data/cardOrder';
+import drawVoteSvg, { setVoteData } from './cardVoteChart';
 
 (() => {
   function cardTemplate(cardData, size = 'medium') {
@@ -17,7 +18,7 @@ import userCardOrder from '../../data/cardOrder';
       <h1 align="right" class="chart-title--large"></h1>
       <h2 align="right" class="chart-title--small"></h2>
       <div
-        tag="${cardData.questionId}" id="vote" href="${cardData.link}">
+        questionId="${cardData.questionId}" id="vote">
       </div>`;
 
     const innerTemplate = (!cardData.type.localeCompare('vote')) ? chartTemplate : imageTemplate;
@@ -60,29 +61,14 @@ import userCardOrder from '../../data/cardOrder';
     });
 
     // bind add event to grid & addCard buttons
-    $('.cards-pool').on('click', '.pool-btn', (event) => {
+    $('.cards-pool').on('click', '.pool-btn', async (event) => {
       const cardID = event.target.dataset.id;
       const cardDOM = $(cardTemplate(cardsData[cardID]));
       // append new card to grid
       $('.grid').append(cardDOM);
       // get a node which is child of appended to .grid
-      const cardElement = cardDOM.find('[id=vote]');
-      $.get(`${cardElement.attr('href')}${cardElement.attr('tag')}/statistics`, (getData) => {
-        // already from vendors import Morris
-        const voteChart = new Morris.Donut({
-          element: cardElement,
-          data: getData.option,
-        });
-        // get the previous node (title)
-        const headerSmall = cardElement.prev().text(`${getData.title}`);
-        headerSmall.prev().text(`${getData.question}`);
-        cardElement.on('click', () => {
-          const userData = JSON.parse(localStorage.getItem('userData'));
-          window.location.href = (!userData.email || userData.email.length === 0) ? '#' :
-            `${cardElement.attr('href')}${userData.email}/${cardElement.attr('tag')}`;
-        });
-        return voteChart;
-      });
+      const cardElement = cardDOM.find('[id=vote]')[0];
+      await setVoteData(cardElement);
       const newCard = $('.grid-item').last();
       $grid.appended(newCard);
       makeCardDraggable($grid, newCard[0]);
@@ -91,29 +77,6 @@ import userCardOrder from '../../data/cardOrder';
     });
   }
 
-  function drawVoteSvg() {
-    return new Promise((resolve) => {
-      $.each($('[id=vote]'), (i, cardDOM) => {
-        $.get(`${cardDOM.getAttribute('href')}${cardDOM.getAttribute('tag')}/statistics`, (getData) => {
-          // already from vendors import Morris
-          const voteChart = new Morris.Donut({
-            element: cardDOM,
-            data: getData.option,
-          });
-          const headerSmall = cardDOM.previousElementSibling;
-          const headerLarger = headerSmall.previousElementSibling;
-          headerLarger.innerText = `${getData.title}`;
-          headerSmall.innerText = `${getData.question}`;
-          cardDOM.addEventListener('click', () => {
-            const userData = JSON.parse(localStorage.getItem('userData'));
-            window.location.href = (!userData.email || userData.email.length === 0) ? '#' :
-              `${cardDOM.getAttribute('href')}${userData.email}/${cardDOM.getAttribute('tag')}`;
-          });
-          resolve(voteChart);
-        });
-      });
-    });
-  }
   // Make cards Draggable & display with masonry layout
   async function initCardsLayout() {
     // render cards

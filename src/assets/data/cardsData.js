@@ -43,7 +43,7 @@ export default {
       medium: 'https://fakeimg.pl/400x600/',
       large: 'https://fakeimg.pl/600x600/',
     },
-    link: 'https://90828d2f.ngrok.io/students/',
+    link: '#',
   },
   5: {
     id: 5,
@@ -55,7 +55,7 @@ export default {
       medium: 'https://fakeimg.pl/400x200/',
       large: 'https://fakeimg.pl/600x200/',
     },
-    link: 'https://90828d2f.ngrok.io/students/',
+    link: '#',
   },
   6: {
     id: 6,
@@ -67,7 +67,7 @@ export default {
       medium: 'https://fakeimg.pl/400x200/',
       large: 'https://fakeimg.pl/600x200/',
     },
-    link: 'https://90828d2f.ngrok.io/students/',
+    link: '#',
   },
   7: {
     id: 7,
@@ -79,6 +79,6 @@ export default {
       medium: 'https://fakeimg.pl/400x200/',
       large: 'https://fakeimg.pl/600x200/',
     },
-    link: 'https://90828d2f.ngrok.io/students/',
+    link: '#',
   },
 };
