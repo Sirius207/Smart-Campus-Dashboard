@@ -6,6 +6,7 @@ import cardsData from '../../data/cardsData';
 import defaultCardOrder from '../../data/cardOrder';
 import drawVoteSvg, { setVoteData } from './cardVoteChart';
 import setNewCardOrder, { getUserCardOrder, addNewCard, removeCard } from './userCardsOrder';
+import addNewAddCardButton from './cards-pool';
 
 (() => {
   function cardTemplate(cardData, size = 'medium') {
@@ -62,6 +63,7 @@ import setNewCardOrder, { getUserCardOrder, addNewCard, removeCard } from './use
       // save in user card order
       const cardID = event.target.parentNode.dataset.cardId;
       removeCard(cardID);
+      addNewAddCardButton(cardID);
     });
 
     // bind add event to grid & addCard buttons
@@ -79,6 +81,7 @@ import setNewCardOrder, { getUserCardOrder, addNewCard, removeCard } from './use
       // save in user card order
       const newCardData = { id: cardID, size: cardSize };
       addNewCard(newCardData);
+
       // bind drag event
       const newCard = $('.grid-item').last();
       $grid.appended(newCard);
