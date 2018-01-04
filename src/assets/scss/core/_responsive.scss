@@ -2,7 +2,7 @@
   .navbar {
     width: 100%;
     justify-content: center;
-    
+
     .navbar-brand img {
       width: 200px;
     }
@@ -11,6 +11,7 @@
       position: absolute;
       display: inline-block;
       right: 10px;
+      border: none;
     }
 
     .navbar-nav {
