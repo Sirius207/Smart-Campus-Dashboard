@@ -3,8 +3,9 @@ import Draggabilly from 'draggabilly';
 import imagesLoaded from 'imagesloaded';
 import $ from 'jquery';
 import cardsData from '../../data/cardsData';
-import userCardOrder from '../../data/cardOrder';
+import defaultCardOrder from '../../data/cardOrder';
 import drawVoteSvg, { setVoteData } from './cardVoteChart';
+import setNewCardOrder, { getUserCardOrder, addNewCard, removeCard } from './userCardsOrder';
 
 (() => {
   function cardTemplate(cardData, size = 'medium') {
@@ -24,7 +25,7 @@ import drawVoteSvg, { setVoteData } from './cardVoteChart';
     const innerTemplate = (!cardData.type.localeCompare('vote')) ? chartTemplate : imageTemplate;
 
     return `
-      <div class="card grid-item grid-item--${size}">
+      <div class="card grid-item grid-item--${size}" data-card-id=${cardData.id}>
         <div class="card-inner">
           ${innerTemplate}
         </div>
@@ -58,6 +59,9 @@ import drawVoteSvg, { setVoteData } from './cardVoteChart';
       $grid.remove(event.target.parentNode);
       // shiftLayout remaining item elements
       $grid.shiftLayout();
+
+      const cardID = event.target.parentNode.dataset.cardId;
+      removeCard(cardID);
     });
 
     // bind add event to grid & addCard buttons
@@ -77,11 +81,16 @@ import drawVoteSvg, { setVoteData } from './cardVoteChart';
     });
   }
 
+  async function renderCards() {
+    const userCardOrder = getUserCardOrder();
+    const cardOrder = userCardOrder || defaultCardOrder;
+    const cardsDom = setAllCardsDOM(cardOrder);
+    $('.grid').append(cardsDom);
+  }
+
   // Make cards Draggable & display with masonry layout
   async function initCardsLayout() {
-    // render cards
-    const cardsDom = setAllCardsDOM(userCardOrder);
-    $('.grid').append(cardsDom);
+    await renderCards();
 
     // reorder cards
     const cardsList = document.querySelector('.grid');

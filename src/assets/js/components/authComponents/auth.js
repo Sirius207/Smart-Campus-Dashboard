@@ -18,6 +18,11 @@ export default function getUserData() {
   return JSON.parse(userData);
 }
 
+export function getUserEmail() {
+  const userData = getUserData();
+  return (userData) ? userData.email : null;
+}
+
 (() => {
   /**
    * Constants used for request & form.
@@ -60,10 +65,10 @@ export default function getUserData() {
     }
   }
 
-  async function initCardOrder(email) {
-    const userCardsOrder = getUserCardOrder(email);
+  async function initCardOrder() {
+    const userCardsOrder = getUserCardOrder();
     if (!userCardsOrder) {
-      setDefaultUserCardOrder(email);
+      setDefaultUserCardOrder();
     }
   }
 
@@ -73,7 +78,7 @@ export default function getUserData() {
       const resData = await getDataFromResponse(response);
       if (typeof (resData) === 'object') {
         setUserData(resData.data);
-        await initCardOrder(resData.data.email);
+        await initCardOrder();
       }
       window.location.reload();
     } catch (error) {

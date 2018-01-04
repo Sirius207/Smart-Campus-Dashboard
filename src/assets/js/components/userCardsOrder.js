@@ -1,46 +1,46 @@
 import defaultCardOrder from '../../data/cardOrder';
-
+import { getUserEmail } from './authComponents/auth';
 /**
  * Local Storage Access Method
  */
 
-function setUserCardOrder(email, userOrder) {
+function setUserCardOrder(userOrder) {
+  const email = getUserEmail();
   localStorage.setItem(`order/${email}`, JSON.stringify(userOrder));
 }
 
-export function getUserCardOrder(email) {
+export function getUserCardOrder() {
+  const email = getUserEmail();
   const userOrder = localStorage.getItem(`order/${email}`);
   return JSON.parse(userOrder);
 }
 
-export function setDefaultUserCardOrder(email) {
-  setUserCardOrder(email, defaultCardOrder);
+export function setDefaultUserCardOrder() {
+  setUserCardOrder(defaultCardOrder);
 }
-
 
 /**
  * Append new card in user cards order
  *
  * @param   Object  newCard: e.g. { id: 1, size: 'large' },
- * @param   String  email: unique key of user card order
  */
-export function addNewCard(newCard, email) {
-  const currentOrder = getUserCardOrder(email);
+export function addNewCard(newCard) {
+  const currentOrder = getUserCardOrder();
   currentOrder.size[newCard.id] = newCard.size;
   currentOrder.usedID.push(newCard.id);
-  setUserCardOrder(email, currentOrder);
+  setUserCardOrder(currentOrder);
 }
 
-export function removeCard(cardId, email) {
-  const currentOrder = getUserCardOrder(email);
+export function removeCard(cardId) {
+  const currentOrder = getUserCardOrder();
   const toRemovedCardIndex = currentOrder.usedID.indexOf(cardId);
-  delete currentOrder.size(cardId);
+  delete currentOrder.size[cardId];
   currentOrder.usedID.splice(toRemovedCardIndex, 1);
-  setUserCardOrder(email, currentOrder);
+  setUserCardOrder(currentOrder);
 }
 
-export default function reOrderCards(cardOrder, email) {
-  const currentOrder = getUserCardOrder(email);
+export default function setNewCardOrder(cardOrder) {
+  const currentOrder = getUserCardOrder();
   currentOrder.usedID = cardOrder;
-  setUserCardOrder(email, currentOrder);
+  setUserCardOrder(currentOrder);
 }

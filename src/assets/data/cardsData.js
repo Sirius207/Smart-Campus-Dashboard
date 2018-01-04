@@ -47,7 +47,7 @@ export default {
   },
   5: {
     id: 5,
-    title: 'Vote-b',
+    title: '成功大學學生飲食習慣調查',
     type: 'vote',
     questionId: '5a4ce12512529532a4a58b29',
     size: {

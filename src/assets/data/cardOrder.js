@@ -6,5 +6,5 @@ export default {
     2: 'large',
     3: 'large',
   },
-  usedID: [1, 5, 4, 2, 3],
+  usedID: ['1', '5', '4', '2', '3'],
 };
