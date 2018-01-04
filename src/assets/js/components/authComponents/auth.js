@@ -1,5 +1,6 @@
 import $ from 'jquery';
 import './authRender';
+import { getUserCardOrder, setDefaultUserCardOrder } from '../userCardsOrder';
 
 /**
  * Local Storage Access Method
@@ -59,12 +60,20 @@ export default function getUserData() {
     }
   }
 
+  async function initCardOrder(email) {
+    const userCardsOrder = getUserCardOrder(email);
+    if (!userCardsOrder) {
+      setDefaultUserCardOrder(email);
+    }
+  }
+
   async function authProcess(route, body) {
     try {
       const response = await request(`${BASE_URL}/${route}/`, 'POST', body);
       const resData = await getDataFromResponse(response);
       if (typeof (resData) === 'object') {
         setUserData(resData.data);
+        await initCardOrder(resData.data.email);
       }
       window.location.reload();
     } catch (error) {
