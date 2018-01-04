@@ -102,6 +102,6 @@ import drawVoteSvg, { setVoteData } from './cardVoteChart';
   $(document).ready(() => {
     initCardsLayout();
     // remove loader when loading complete
-    $('.loader').remove();
+    $('.loader--cards').remove();
   });
 })();

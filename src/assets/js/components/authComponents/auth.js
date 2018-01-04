@@ -128,12 +128,15 @@ export default function getUserData() {
     login(formData);
   });
 
-  $('#btn--signup').click((event) => {
+  $('#btn--signup').click(async (event) => {
     event.preventDefault();
     const formId = 'form--signup';
     const formFields = ['email', 'password', 'nickname'];
     const formData = getFormData(formId, formFields);
-    signup(formData);
+    const smallLoaderTemplate = '<div class="loader loader--submit"></div>';
+    $('#btn--signup').after(smallLoaderTemplate);
+    await signup(formData);
+    $('.loader--submit').remove();
   });
 
   $('#btn--logout').click(logout);
@@ -148,5 +151,4 @@ export default function getUserData() {
     const formData = getFormData(formId, formFields);
     setup(formData);
   });
-
 })();
