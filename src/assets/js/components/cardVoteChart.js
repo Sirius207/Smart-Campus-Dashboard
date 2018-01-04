@@ -22,7 +22,6 @@ function bindVoteClickEvent(cardDOM) {
       const questionId = cardDOM.getAttribute('questionId');
       redirectToVotePage(userData, questionId);
     } else {
-      console.log('ee');
       showLoginForm();
     }
   });
