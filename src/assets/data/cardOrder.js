@@ -1,10 +1,10 @@
 export default {
-  order: [
-    { id: 1, size: 'medium' },
-    { id: 5, size: 'medium' },
-    { id: 4, size: 'medium' },
-    { id: 2, size: 'large' },
-    { id: 3, size: 'large' },
-  ],
-  usedID: [1, 2, 3, 5, 4],
+  size: {
+    1: 'medium',
+    5: 'medium',
+    4: 'medium',
+    2: 'large',
+    3: 'large',
+  },
+  usedID: [1, 5, 4, 2, 3],
 };

@@ -33,9 +33,9 @@ import drawVoteSvg, { setVoteData } from './cardVoteChart';
   }
 
   function setAllCardsDOM(cardOrderList) {
-    return cardOrderList.reduce((cardsDom, cardData) => {
+    return cardOrderList.usedID.reduce((cardsDom, cardID) => {
       let currentDom = cardsDom;
-      currentDom += cardTemplate(cardsData[cardData.id], cardData.size);
+      currentDom += cardTemplate(cardsData[cardID], cardOrderList.size[cardID]);
       return currentDom;
     }, '');
   }
@@ -80,7 +80,7 @@ import drawVoteSvg, { setVoteData } from './cardVoteChart';
   // Make cards Draggable & display with masonry layout
   async function initCardsLayout() {
     // render cards
-    const cardsDom = setAllCardsDOM(userCardOrder.order);
+    const cardsDom = setAllCardsDOM(userCardOrder);
     $('.grid').append(cardsDom);
 
     // reorder cards
