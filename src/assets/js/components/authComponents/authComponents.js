@@ -3,7 +3,7 @@ function inputGroupTemplate(field) {
   return `
     <div class="form-row">
       <div class="inputGroup">
-        <span class="input-label">${field.label}</span>
+        <span class="input-label">${field.name || field.label}</span>
         <input class="input-box" type="${field.type}" name="${field.label}">
       </div>
     </div>
@@ -67,7 +67,7 @@ function setupFormTemplate() {
       title: 'Setup',
     },
     fields: [
-      { label: 'zapperId', type: 'text' },
+      { label: 'zapperId', type: 'text', name: '我的捕蚊燈ID' },
     ],
   };
   return formTemplate(formData.formMeta, formData.fields);

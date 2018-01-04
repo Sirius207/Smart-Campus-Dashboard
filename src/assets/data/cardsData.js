@@ -23,7 +23,7 @@ export default {
   },
   3: {
     id: 3,
-    title: '校園導覽路徑',
+    title: '當日人流動態',
     type: 'image',
     size: {
       small: 'https://fakeimg.pl/200x200/',
