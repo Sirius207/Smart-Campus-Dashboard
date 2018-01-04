@@ -35,7 +35,7 @@ export default {
   },
   4: {
     id: 4,
-    title: 'Vote-a',
+    title: '你贊成系K館的成立嗎？',
     type: 'vote',
     questionId: '5a260bc273e4501c0ccae797',
     size: {
@@ -59,9 +59,21 @@ export default {
   },
   6: {
     id: 6,
-    title: '你贊成系K館的成立嗎？',
+    title: '光復餐廳使用調查',
     type: 'vote',
-    questionId: '5a260bc273e4501c0ccae797',
+    questionId: '5a4da15d4d912f1934250741',
+    size: {
+      small: 'https://fakeimg.pl/200x200/',
+      medium: 'https://fakeimg.pl/400x200/',
+      large: 'https://fakeimg.pl/600x200/',
+    },
+    link: 'https://90828d2f.ngrok.io/students/',
+  },
+  7: {
+    id: 7,
+    title: '畢業生流向調查',
+    type: 'vote',
+    questionId: '5a4da5cb4d912f193425079c',
     size: {
       small: 'https://fakeimg.pl/200x200/',
       medium: 'https://fakeimg.pl/400x200/',
