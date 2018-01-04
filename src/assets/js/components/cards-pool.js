@@ -1,9 +1,11 @@
 import $ from 'jquery';
 import cardsData from '../../data/cardsData';
-import userCardOrder from '../../data/cardOrder';
+import defaultCardOrder from '../../data/cardOrder';
+import { getUserCardOrder } from './userCardsOrder';
 
 (() => {
-  const usedCardsID = userCardOrder.usedID;
+  const userCardOrder = getUserCardOrder();
+  const usedCardsID = userCardOrder.usedID || defaultCardOrder.usedID;
 
   function cardPoolItemTemplate(cardData) {
     const poolItem = `
@@ -15,7 +17,7 @@ import userCardOrder from '../../data/cardOrder';
   }
 
   function keepUnusedCard(cardData) {
-    return !(usedCardsID.includes(cardData.id));
+    return !(usedCardsID.includes(cardData.id.toString()));
   }
 
   function setCardsPoolDOM() {

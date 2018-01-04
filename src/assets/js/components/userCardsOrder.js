@@ -26,6 +26,7 @@ export function setDefaultUserCardOrder() {
  */
 export function addNewCard(newCard) {
   const currentOrder = getUserCardOrder();
+  if (!currentOrder) { return; }
   currentOrder.size[newCard.id] = newCard.size;
   currentOrder.usedID.push(newCard.id);
   setUserCardOrder(currentOrder);
@@ -33,6 +34,7 @@ export function addNewCard(newCard) {
 
 export function removeCard(cardId) {
   const currentOrder = getUserCardOrder();
+  if (!currentOrder) { return; }
   const toRemovedCardIndex = currentOrder.usedID.indexOf(cardId);
   delete currentOrder.size[cardId];
   currentOrder.usedID.splice(toRemovedCardIndex, 1);
@@ -41,6 +43,7 @@ export function removeCard(cardId) {
 
 export default function setNewCardOrder(cardOrder) {
   const currentOrder = getUserCardOrder();
+  if (!currentOrder) { return; }
   currentOrder.usedID = cardOrder;
   setUserCardOrder(currentOrder);
 }

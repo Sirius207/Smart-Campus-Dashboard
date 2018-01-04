@@ -59,7 +59,7 @@ import setNewCardOrder, { getUserCardOrder, addNewCard, removeCard } from './use
       $grid.remove(event.target.parentNode);
       // shiftLayout remaining item elements
       $grid.shiftLayout();
-
+      // save in user card order
       const cardID = event.target.parentNode.dataset.cardId;
       removeCard(cardID);
     });
@@ -67,12 +67,19 @@ import setNewCardOrder, { getUserCardOrder, addNewCard, removeCard } from './use
     // bind add event to grid & addCard buttons
     $('.cards-pool').on('click', '.pool-btn', async (event) => {
       const cardID = event.target.dataset.id;
-      const cardDOM = $(cardTemplate(cardsData[cardID]));
+      const cardSize = cardsData[cardID].defaultSize;
+      const cardDOM = $(cardTemplate(cardsData[cardID], cardSize));
       // append new card to grid
       $('.grid').append(cardDOM);
       // get a node which is child of appended to .grid
       const cardElement = cardDOM.find('[id=vote]')[0];
-      await setVoteData(cardElement);
+      if (cardElement) {
+        await setVoteData(cardElement);
+      }
+      // save in user card order
+      const newCardData = { id: cardID, size: cardSize };
+      addNewCard(newCardData);
+      // bind drag event
       const newCard = $('.grid-item').last();
       $grid.appended(newCard);
       makeCardDraggable($grid, newCard[0]);
