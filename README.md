@@ -8,6 +8,9 @@ A dashboard to display all applications of smart campus.
 
 ## Changelog
 
+1.0.1
+- - [ ] Resize cards
+
 1.0.0
 
 - Layout
@@ -17,31 +20,32 @@ A dashboard to display all applications of smart campus.
 - - [x] Dynamic Cards Loading
 - - [x] Remove Cards
 - - [x] Add Cards
-- - [ ] Resize cards
 - Func
 - - [x] Signup
 - - [x] Login
 
 
-## Setup
+## Getting Started
+
 
 ### Prerequisite
 - Webpack: 3.x
 - webpack-dev-server: 2.x
 - ESLint: [airbnb](https://github.com/airbnb/javascript/tree/master/packages/eslint-config-airbnb)
 
-### 1. Install Dependency
+
+### Installing
 
 ```
 $ yarn install // or npm install
 ```
 
-### 2. Run Locally (Dev)
+### Run Locally (Dev)
 ```
 $ npm run dev
 ```
 
-### 3. Generate Production Static Files
+### Generate Production Static Files
 ```
 $ npm run build
 ```
