@@ -76,7 +76,7 @@ function setupFormTemplate() {
 // Pop Menu of Avatar
 // @Todo: Update links
 function userMenuTemplate() {
-  return ` 
+  return `
     <div class="popover avatar-pop">
       <div class="popover-inner">
         <ul class="list">
@@ -91,6 +91,7 @@ function userMenuTemplate() {
 // avatar image e.g. https://cdn-images-1.medium.com/fit/c/32/32/1*EhFnVbXnRoEzBI6u97Bt7w.jpeg" alt="avatar
 function authNavItemTemplate() {
   return `
+    ${JSON.parse(localStorage.getItem('userData')).nickname}
     <li class="nav-item">
       <button id="menu--topAvatar" class="btn btn--reset">
         <div class="avatar">
