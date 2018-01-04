@@ -19,6 +19,7 @@ export default {
       medium: 'https://fakeimg.pl/400x400/',
       large: './assets/media/zapper.png',
     },
+    defaultSize: 'large',
     link: '#',
   },
   3: {
