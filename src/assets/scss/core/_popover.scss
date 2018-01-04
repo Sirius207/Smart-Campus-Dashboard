@@ -33,9 +33,14 @@ $popOver-top: 60px;
   // login & signup form block
   &.authForm-pop {
     top: $popOver-top;
-    right: 10%;
     padding: 20px;
     @extend %general-block-frame;
+    &.login-pop {
+      right: 10%;
+    }
+    &.signup-pop {
+      right: 13%;
+    }
   }
   .popover-inner {
     padding: 8px 0;
