@@ -3,6 +3,7 @@ A dashboard to display all applications of smart campus.
 
 [![Maintainability](https://api.codeclimate.com/v1/badges/604f7e6136089a943a0f/maintainability)](https://codeclimate.com/github/Sirius207/Smart-Campus-Dashboard/maintainability)
 [![Known Vulnerabilities](https://snyk.io/test/github/sirius207/smart-campus-dashboard/badge.svg)](https://snyk.io/test/github/sirius207/smart-campus-dashboard)
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FSirius207%2FSmart-Campus-Dashboard.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2FSirius207%2FSmart-Campus-Dashboard?ref=badge_shield)
 
 
 
@@ -49,3 +50,7 @@ $ npm run dev
 ```
 $ npm run build
 ```
+
+
+## License
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FSirius207%2FSmart-Campus-Dashboard.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2FSirius207%2FSmart-Campus-Dashboard?ref=badge_large)
